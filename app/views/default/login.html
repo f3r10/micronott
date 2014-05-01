@@ -33,11 +33,11 @@
 		<section id="form">
 				<br/>				
 		        <h1>Log in to your account</h1>
-				<form name="login-form" id="smart-login" method="post" action="app/controller/login.php">
+				<form name="login-form" id="smart-login" method="post" action="/../micronott/app/model/login.php">
 					<fieldset id="smart-login-fields">
-						<input id="username" type="text" placeholder="Username" required>
+						<input id="username" name="username"type="text" placeholder="Username" required>
 						<br/>
-						<input id="password" type="password" placeholder="Password" required>
+						<input id="password" name="password" type="password" placeholder="Password" required>
 					</fieldset>
 					<span class="password-reset"><a href="#">Forgot Your Password?</a></span><br/><br/><br/>
 					<span class="cookie"><input type="checkbox" value="true">keep me login</span>
