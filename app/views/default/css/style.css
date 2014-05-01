@@ -1,6 +1,6 @@
 /******code for basic styles******/
 body{ 
-background: url('../images/body-bg.jpg');
+background: url('../imagenes/body-bg.jpg');
 font:14px 'Questrial', sans-serif;
 color:#191919;
 }
@@ -62,7 +62,7 @@ margin:20px 25px;
 	border: none;
 }
 #smart-login-fields input{
-background: #f1f1f1 url(../images/login-sprite.png) no-repeat;
+background: #f1f1f1 url(../imagenes/login-sprite.png) no-repeat;
 padding: 7px 15px 7px 30px;
 width: 250px; 
 border: 1px solid #ccc;
