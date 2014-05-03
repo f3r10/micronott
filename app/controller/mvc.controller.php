@@ -1,14 +1,29 @@
 <?php 
 
-require 'app/model/login.php';
+require 'app/model/class_login.php';
 
 
 class mvc_controller
 {
-	function login()
+	function irLogin()
 	{
-		$html = $this->load_page('app/views/default/login.html');
+		$html = $this->load_page('app/views/default/login.php');
 		$this->view_page($html);
+	}
+
+	function analizarLogin($user,$password)
+	{
+		$nuevoSingleton = Login::singleton_login();
+		$usuario = $nuevoSingleton->login_users($user,$password);
+		if($usuario == TRUE)
+    	{
+     		principal();
+    	}
+
+    	else
+    	{
+    		print "login incorrect ola q ace";
+    	}
 	}
 	
 	function principal()

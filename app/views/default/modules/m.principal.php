@@ -1,1 +1,1 @@
-	<a href="index.php?action=login">Login</a>
+	<a href="index.php?action=irLogin">Login</a>
