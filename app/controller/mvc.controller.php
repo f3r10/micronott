@@ -1,6 +1,7 @@
 <?php 
 
 require 'app/model/class_login.php';
+require 'app/model/conexion_register_ajax_class.php';
 
 
 class mvc_controller
@@ -9,6 +10,42 @@ class mvc_controller
 	{
 		$html = $this->load_page('app/views/default/login.php');
 		$this->view_page($html);
+	}
+
+	function irRegister()
+	{
+		$html = $this->load_page('app/views/default/register.html');
+		$this->view_page($html);
+	}
+
+	function analizarLoginAjax($user,$password)
+	{
+		$nuevoSingleton = Login::singleton_login();
+		$usuario = $nuevoSingleton->login_users($user,$password);
+		if($usuario == TRUE)
+    	{
+     		echo '2';
+    	}
+
+    	else
+    	{
+    		echo '3';
+    	}
+	}
+	function analizarRegisterAjax($email)
+	{
+		$nuevoSingleton = Register_Ajax::singleton_login();
+		$email = $nuevoSingleton->register_mail($email);
+		if($email == TRUE)
+    	{
+     		echo 'usuario ya registrado';
+    	}
+
+    	else
+    	{
+    		echo 'usuario no registrado';
+    	}
+
 	}
 
 	function analizarLogin($user,$password)

@@ -10,6 +10,10 @@ $mvc = new mvc_controller();
   	{
   		$mvc->irLogin();
   	}
+    else if ($_GET['action'] == 'irRegister')
+    {
+      $mvc->irRegister();
+    }
     
   	else
   	{
@@ -17,10 +21,20 @@ $mvc = new mvc_controller();
   	}
     
   }
-  else if( isset($_POST['username']) && isset($_POST['password']) )
-    {
-      $mvc->analizarLogin($_POST['username'], $_POST['password']);
-    }
+ # else if( isset($_POST['username']) && isset($_POST['password']) )
+  #  {
+   #   $mvc->analizarLogin($_POST['username'], $_POST['password']);
+    #}
+  else if(isset($_POST['username']) && isset($_POST['password']) )
+  {
+    $mvc->analizarLoginAjax($_POST['username'], $_POST['password']);
+  }
+
+  else if(isset($_POST['email'])  )
+  {
+    $mvc->analizarRegisterAjax($_POST['email']);
+  }
+
   else
   {
     $mvc->principal();

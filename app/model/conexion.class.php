@@ -7,7 +7,7 @@ class Conexion{
 	{
 		try
 		{
-			$this->dbh= new PDO('mysql:host=localhost;dbname=bd_pruebalogin','root','root');
+			$this->dbh= new PDO('mysql:host=localhost;dbname=micronott','root','root');
 			$this->dbh->exec("SET CHARACTER SET uft8");
 		}catch(PDOException $e){
 			print "Error:" . $e->getMessage();

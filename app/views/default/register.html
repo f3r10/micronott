@@ -10,15 +10,15 @@
 	
 	
 	<!--code for stylesheets-->
-	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/styleRegister.css">
+	<link rel="stylesheet" type="text/css" href="app/views/default/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="app/views/default/css/styleRegister.css">
 	
 	<!--code for fonts-->
     <link href="http://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css"/>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css" />
 	
 	<!--code for js-->
-	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="app/views/default/js/jquery-2.1.0.min.js"></script>
 	
     
      
@@ -34,7 +34,7 @@
 
 	<input type="text" class="text-field" placeholder="First Name" />
     <input type="text" class="text-field" placeholder="Last Name" />
-    <input type="email" class="text-field" placeholder="E-mail" />
+    <input type="email" class="text-field" placeholder="E-mail" id="email" onkeyup="check_register()"  />
     <input type="password" class="text-field" placeholder="Password" />
     <input type="password" class="text-field" placeholder="Repeat Password" />
     
@@ -47,6 +47,6 @@
 	
 	</section>
 	<div class="footer"></div>
-	
+	<script src="app/views/default/js/ajaxConnection.js"></script>
   </body>
 </html>
