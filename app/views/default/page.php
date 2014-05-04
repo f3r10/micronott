@@ -50,5 +50,7 @@
 })
 });
 	</script>
+
+	<script src="app/views/default/js/addCommentToContent.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@
   
   <body>
     <!--code for main wrapper-->
-    <nav><a href="login.html">Log In</a> | <a href="#" class="focus">Register</a></nav>
+    <nav><a href="index.php?action=irLogin">Log In</a> | <a href="#" class="focus">Register</a></nav>
 	<section id="formMain">
 		<form class="register">
 
@@ -35,10 +35,10 @@
 	<input type="text" class="text-field" placeholder="First Name" />
     <input type="text" class="text-field" placeholder="Last Name" />
     <input type="email" class="text-field" placeholder="E-mail" id="email" onkeyup="check_register()"  />
-    <input type="password" class="text-field" placeholder="Password" />
+    <input type="password" class="text-field" placeholder="Password" id="password" />
     <input type="password" class="text-field" placeholder="Repeat Password" />
     
-    <input type="button" value="Register Account" class="button" />
+    <input type="submit" value="Register Account" class="button" onclick="validarRegistro()" />
 
 </form>
        
@@ -48,5 +48,6 @@
 	</section>
 	<div class="footer"></div>
 	<script src="app/views/default/js/ajaxConnection.js"></script>
+	<script src="app/views/default/js/Validador.js"></script>
   </body>
 </html>

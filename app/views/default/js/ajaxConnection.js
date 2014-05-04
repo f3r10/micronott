@@ -69,9 +69,16 @@ function check_register()
         {
         if( xmlhttp.readyState == 4 && xmlhttp.status == 200 )
         {
-        	console.log("comprobacion con exito del email"); 
-        	console.log(xmlhttp.responseText);
-        
+        	
+        	if(xmlhttp.responseText=="usuario ya registrado")
+            {
+                document.getElementById("email").style.border="solid 1px red";
+            }
+
+            else if (xmlhttp.responseText=="usuario no registrado")
+            {
+                document.getElementById("email").style.border="solid 1px green";
+            }
 
         }
         });

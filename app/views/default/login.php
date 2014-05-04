@@ -26,14 +26,14 @@
   
   <body>
     <!--code for main wrapper-->
-    <nav><a href="#" class="focus">Log In</a> | <a href="register.html">Register</a></nav>
+    <nav><a href="#" class="focus">Log In</a> | <a href="index.php?action=irRegister">Register</a></nav>
 	<section id="wrapper">
 	
         <!--code for form-->
 		<section id="form">
 				<br/>				
 		        <h1>Log in to your account</h1>
-				<form name="login-form" id="smart-login" >
+				<form name="login-form" id="smart-login" method="post" action="index.php" >
 					<fieldset id="smart-login-fields">
 						<input id="username" name="username"type="text" placeholder="Username" required>
 						<br/>
@@ -43,7 +43,7 @@
 					<span class="cookie"><input type="checkbox" value="true">keep me login</span>
 					<fieldset id="smart-login-actions">
 						<input type="reset" id="reset" value="Reset">
-						<input type="button" id="login" value="Log in" onclick="check_login()" >
+						<input type="submit" id="login" value="Log in"  >
 					</fieldset>
 					<br/>
 	  			 </form>

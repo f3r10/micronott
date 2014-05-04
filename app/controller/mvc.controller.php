@@ -54,7 +54,7 @@ class mvc_controller
 		$usuario = $nuevoSingleton->login_users($user,$password);
 		if($usuario == TRUE)
     	{
-     		principal();
+     		$this->contenido();
     	}
 
     	else
@@ -64,6 +64,17 @@ class mvc_controller
 	}
 	
 	function principal()
+	{
+		# lo comentado hacia que la pagina principal fuese la de contenido 
+		#$pagina=$this->load_template('Pagina Principal MVC');				
+		#$html = $this->load_page('app/views/default/modules/m.principal.php');
+		#$pagina = $this->replace_content('/\#SECTION\#/ms' ,$html , $pagina);
+		#$this->view_page($pagina);
+		$html = $this->load_page('app/views/default/login.php');
+		$this->view_page($html);
+	}
+
+	function contenido()
 	{
 		$pagina=$this->load_template('Pagina Principal MVC');				
 		$html = $this->load_page('app/views/default/modules/m.principal.php');

@@ -9,9 +9,20 @@
 				<a class="filtro" href="#">
 					IEEE
 				</a>
-				<a class="publicar" href="#" id="idPublicar">
-					Publicar
-				</a>
+				<a class="publicar" href="#openModal" id="idPublicar">Publicar</a>
+				<div id="openModal" class="modalDialog">
+					<div>
+						<a href="#close" title="Close" class="close">X</a>
+						<form class="formularioEnvio" method="post" action="#">
+							<fieldset  id="smart-content">
+							<p>
+							<input type="text" id="comment"class="comment" placehoder="Here your text">
+							</p>
+							<input type="button" name="enviar" value="Enviar" onclick="addContent()" >
+							</fieldset>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="usuario">
