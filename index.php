@@ -3,6 +3,16 @@
 
 
 $mvc = new mvc_controller();
+$sesion=FALSE;
+if(isset($_SESSION["autenticado"]))
+{
+  $sesion=TRUE;
+}
+else
+{
+  $sesion=FALSE;
+}
+
 
   if(isset($_GET['action']))
   {
@@ -21,7 +31,7 @@ $mvc = new mvc_controller();
   	}
     
   }
-  else if( isset($_POST['username']) && isset($_POST['password']) )
+  else if( isset($_POST['username']) && isset($_POST['password'])  )
     {
       $mvc->analizarLogin($_POST['username'], $_POST['password']);
     }
@@ -30,9 +40,13 @@ $mvc = new mvc_controller();
    # $mvc->analizarLoginAjax($_POST['username'], $_POST['password']);
   #}
 
-  else if(isset($_POST['email'])  )
+  else if(isset($_POST['email']) )
   {
     $mvc->analizarRegisterAjax($_POST['email']);
+  }
+  else if (strstr($_SERVER['REQUEST_URI'], '/micronott/index.php') || strstr($_SERVER['REQUEST_URI'], '/micronott/') && $sesion)
+  {
+    $mvc->contenido();
   }
 
   else

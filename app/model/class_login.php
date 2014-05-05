@@ -1,6 +1,5 @@
 <?php 
 require_once 'conexion.class.php';
-session_start();
 class Login
 {
 	private static $instancia;
@@ -36,9 +35,11 @@ class Login
 			//si existe el usuario
             if($query->rowCount() == 1)
             {
+            	session_start();
                  
                  $fila  = $query->fetch();
-                 $_SESSION['username'] = $fila['nickname'];                 
+                 $_SESSION['username'] = $fila['nickname'];
+                 $_SESSION['autenticado'] = 'SI';           
                  return TRUE;
     
             }

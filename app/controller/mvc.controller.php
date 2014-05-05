@@ -2,8 +2,7 @@
 
 require 'app/model/class_login.php';
 require 'app/model/conexion_register_ajax_class.php';
-
-
+@session_start();
 class mvc_controller
 {
 	function irLogin()
@@ -55,11 +54,12 @@ class mvc_controller
 		if($usuario == TRUE)
     	{
      		$this->contenido();
+     		#header('location:app/views/default/contenido.html');
     	}
 
     	else
     	{
-    		print "login incorrect ola q ace";
+    		$this->principal();
     	}
 	}
 	
@@ -79,7 +79,11 @@ class mvc_controller
 		$pagina=$this->load_template('Pagina Principal MVC');				
 		$html = $this->load_page('app/views/default/modules/m.principal.php');
 		$pagina = $this->replace_content('/\#SECTION\#/ms' ,$html , $pagina);
-		$this->view_page($pagina);
+		
+			  $this->view_page($pagina);
+			
+		
+		#header('location:app/views/default/contenido.html');
 	}
 
 	function load_template($title='Sin Titulo'){
