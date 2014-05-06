@@ -1,6 +1,6 @@
 <?php 
 require_once 'conexion.class.php';
-class Register_Ajax
+class RegisterUser
 {
 	private static $instancia;
 	private $dbh;
@@ -21,25 +21,25 @@ class Register_Ajax
 		return self::$instancia;
 	}
 
-	public function register_mail($email)
+	public function register_user($fname,$lname,$nickname,$email,$password,$password2)
 	{
 		try
 		{
-			$sql = "SELECT * from user WHERE email =?";
+			$sql = "INSERT into user (name,nickname,surename,email) values(?,?,?,?)";
 			$query = $this->dbh->prepare($sql);
-			$query->bindParam(1,$email);
-			$query->execute();
+			$query->bindParam(1,$fname);
+			$query->bindParam(2,$nickname);
+			$query->bindParam(3,$lname);
+			$query->bindParam(4,$email);
+			$checkInsert = $query->execute();
 			$this->dbh = null;
 
-			//si existe el usuario
-            if($query->rowCount() == 1)
-            {
-                 
-                 $fila  = $query->fetch();
-                 $_SESSION['email'] = $fila['email'];                 
-                 return TRUE;
+            if($checkInsert)
+            {         
+            	$this->register_credentials($nickname,$password,$password2);
     
             }
+ 
 		}
 		catch(PDOException $e){
             
@@ -47,25 +47,22 @@ class Register_Ajax
             
         }  
 	}
-	public function register_nickName($nickName)
+	public function register_credentials($nickname,$password,$password2)
 	{
 		try
 		{
-			$sql = "SELECT * from user WHERE nickname =?";
+			$sql = "SELECT iduser from user WHERE email =?";
 			$query = $this->dbh->prepare($sql);
-			$query->bindParam(1,$nickName);
-			$query->execute();
+			$query->bindParam(1,$nickname);
+			$checkInsert = $query->execute();
 			$this->dbh = null;
 
-			//si existe el usuario
-            if($query->rowCount() == 1)
-            {
-                 
-                 $fila  = $query->fetch();
-                 $_SESSION['nickname'] = $fila['nickname'];                 
-                 return TRUE;
+            if($checkInsert)
+            {         
+            	return "ahora si";
     
             }
+ 
 		}
 		catch(PDOException $e){
             

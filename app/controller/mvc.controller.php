@@ -2,6 +2,7 @@
 
 require 'app/model/class_login.php';
 require 'app/model/conexion_register_ajax_class.php';
+require 'app/model/class.conexion_registroUsuario.php';
 @session_start();
 class mvc_controller
 {
@@ -45,6 +46,31 @@ class mvc_controller
     		echo 'usuario no registrado';
     	}
 
+	}
+	function analizarRegisterAjax_nickName($nickName)
+	{
+		$nuevoSingleton = Register_Ajax::singleton_login();
+		$nickName = $nuevoSingleton->register_nickName($nickName);
+		if($nickName == TRUE)
+    	{
+     		echo 'usuario ya registrado';
+    	}
+
+    	else
+    	{
+    		echo 'usuario no registrado';
+    	}
+	}
+
+	function registrarUsuario($fname,$lname,$nickname,$email,$password,$password2)
+	{
+		$nuevoSingleton = RegisterUser::singleton_login();
+		$insertValid = $nuevoSingleton->register_user($fname,$lname,$nickname,$email,$password,$password2);
+		
+		foreach ($insertValid as $row)
+		{
+			echo $row['iduser'];
+		}
 	}
 
 	function analizarLogin($user,$password)

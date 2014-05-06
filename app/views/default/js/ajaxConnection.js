@@ -60,28 +60,36 @@ function check_login()
         });
     }
 
-function check_register()
+function check_withAjax(value_check_ajax)
 {
-	console.log("entra check register");
-	var post_check_email = "email=" + document.getElementById("email").value;
+	var post_check_email = value_check_ajax+"=" + document.getElementById(value_check_ajax).value;
 	ajaxPostCallManip(post_check_email, "index.php", function()  
         // toDoFunc to be performed when server response is ready
         {
         if( xmlhttp.readyState == 4 && xmlhttp.status == 200 )
-        {
+        {   
+            console.log(xmlhttp.readyState);
         	
         	if(xmlhttp.responseText=="usuario ya registrado")
             {
-                document.getElementById("email").style.border="solid 1px red";
+
+                document.getElementById(value_check_ajax).style.border="solid 1px red";
             }
 
             else if (xmlhttp.responseText=="usuario no registrado")
             {
-                document.getElementById("email").style.border="solid 1px green";
+                document.getElementById(value_check_ajax).style.border="solid 1px green";
             }
 
         }
         });
 
+}
+
+function check_register(value_check_ajax)
+{
+
+    var value_for_database= value_check_ajax.name;
+    check_withAjax(value_for_database);
 }
 
