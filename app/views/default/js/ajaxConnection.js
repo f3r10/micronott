@@ -1,10 +1,8 @@
 var xmlhttp;
 
-function ajaxPostCallManip( str, url, toDoFunc )
-    {   
-        if( window.XMLHttpRequest )
-        {         // For modern browsers
-        xmlhttp = new XMLHttpRequest;
+function ajaxPostCallManip(str,url,toDoFunc) {   
+        if(window.XMLHttpRequest){         // For modern browsers
+            xmlhttp = new XMLHttpRequest;
     	}
         else
         {                    // For old browsers

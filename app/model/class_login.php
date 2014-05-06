@@ -25,7 +25,8 @@ class Login
 	{
 		try
 		{
-			$sql = "SELECT * from user usr, userscredentials c  WHERE usr.iduser=c.iduser and  usr.nickname =? AND c.password =?";
+			//$sql = "SELECT * from user usr, userscredentials c  WHERE usr.iduser=c.iduser and  usr.nickname =? AND c.password =?";
+			$sql = "SELECT * FROM userscredentials WHERE usrnickname=? and password=?";
 			$query = $this->dbh->prepare($sql);
 			$query->bindParam(1,$username);
 			$query->bindParam(2,$password);
@@ -38,7 +39,7 @@ class Login
             	session_start();
                  
                  $fila  = $query->fetch();
-                 $_SESSION['username'] = $fila['nickname'];
+                 $_SESSION['username'] = $fila['usrnickname'];
                  $_SESSION['autenticado'] = 'SI';           
                  return TRUE;
     
