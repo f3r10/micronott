@@ -3,7 +3,7 @@
 			<div class="descripcion">
 				<div class="detalles">
 					<h2 class="titulo">
-						aaaaaaaasdhjvbahdbvaidbviajsdbvajksdbvasjbdvakjsbdvakjsbdvajksdbvaskjdbvsjkdbvasdkjvbasjkdvbsjkdbvjskdvbsjkdbvsjdvbsjdkvbsdjvbsjdkvbsjdvbsjd
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, laborum, sapiente, libero, autem necessitatibus blanditiis quisquam doloribus dolor molestias corporis a quam eum nisi ea voluptate praesentium iste saepe vitae.
 					</h2>
 					<p class="autor">
 						por <a href="#">Diana Reyes</a>
