@@ -1,7 +1,6 @@
 <?php 
 require_once 'conexion.class.php';
-require_once 'class.conexion_registroCredenciales.php';
-class RegisterUser
+class RegisterCredentiales
 {
 	private static $instancia;
 	private $dbh;
@@ -22,27 +21,21 @@ class RegisterUser
 		return self::$instancia;
 	}
 
-	public function register_user($fname,$lname,$nickname,$email,$password,$password2)
+	public function register_credentials($nickname,$password)
 	{
 		try
 		{
-			$sql = "INSERT into user (name,nickname,surename,email) values(?,?,?,?)";
+			$sql = "UPDATE  userscredentials set password=? WHERE usrnickname=?";
 			$query = $this->dbh->prepare($sql);
-			$query->bindParam(1,$fname);
+			$query->bindParam(1,$password);
 			$query->bindParam(2,$nickname);
-			$query->bindParam(3,$lname);
-			$query->bindParam(4,$email);
 			$checkInsert = $query->execute();
 			$this->dbh = null;
+			if($checkInsert)
+			{
+				return TRUE;
+			}
 
-            if($checkInsert)
-            {         
-            	$nuevoSingleton = RegisterCredentiales::singleton_login();
-            	$registro = $nuevoSingleton->register_credentials($nickname,$password);
-            	echo $registro;
-    
-            }
- 
 		}
 		catch(PDOException $e){
             

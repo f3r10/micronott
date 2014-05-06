@@ -31,14 +31,14 @@ else
   	}
     
   }
-  #else if( isset($_POST['username']) && isset($_POST['password'])  )
-   # {
-    #  $mvc->analizarLogin($_POST['username'], $_POST['password']);
-   # }
-  #else if(isset($_POST['username']) && isset($_POST['password']) )
-  #{
-   # $mvc->analizarLoginAjax($_POST['username'], $_POST['password']);
-  #}
+  else if( isset($_POST['username']) && isset($_POST['password'])  )
+    {
+      $mvc->analizarLogin($_POST['username'], $_POST['password']);
+    }
+  else if(isset($_POST['username']) && isset($_POST['password']) )
+  {
+    $mvc->analizarLoginAjax($_POST['username'], $_POST['password']);
+  }
 
   else if(isset($_POST['email']) && !isset($_POST['lName']) )
   {

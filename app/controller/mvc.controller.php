@@ -66,11 +66,7 @@ class mvc_controller
 	{
 		$nuevoSingleton = RegisterUser::singleton_login();
 		$insertValid = $nuevoSingleton->register_user($fname,$lname,$nickname,$email,$password,$password2);
-		
-		foreach ($insertValid as $row)
-		{
-			echo $row['iduser'];
-		}
+		echo $insertValid;
 	}
 
 	function analizarLogin($user,$password)

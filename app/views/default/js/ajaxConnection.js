@@ -62,14 +62,13 @@ function check_login()
 
 function check_withAjax(value_check_ajax)
 {
-	var post_check_email = value_check_ajax+"=" + document.getElementById(value_check_ajax).value;
+	var post_check_email = value_check_ajax +"=" + document.getElementById(value_check_ajax).value;
 	ajaxPostCallManip(post_check_email, "index.php", function()  
         // toDoFunc to be performed when server response is ready
         {
         if( xmlhttp.readyState == 4 && xmlhttp.status == 200 )
         {   
-            console.log(xmlhttp.readyState);
-        	
+            console.log(xmlhttp.responseText);	
         	if(xmlhttp.responseText=="usuario ya registrado")
             {
 
