@@ -36,7 +36,7 @@ class Login
 			//si existe el usuario
             if($query->rowCount() == 1)
             {
-            	session_start();
+            	
                  
                  $fila  = $query->fetch();
                  $_SESSION['username'] = $fila['usrnickname'];

@@ -3,13 +3,15 @@
 require 'app/model/class_login.php';
 require 'app/model/conexion_register_ajax_class.php';
 require 'app/model/class.conexion_registroUsuario.php';
-@session_start();
+
 class mvc_controller
 {
 	function irLogin()
 	{
+		
 		$html = $this->load_page('app/views/default/login.php');
 		$this->view_page($html);
+		
 	}
 
 	function irRegister()

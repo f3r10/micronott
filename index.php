@@ -4,13 +4,14 @@
 
 $mvc = new mvc_controller();
 $sesion=FALSE;
-if(isset($_SESSION["autenticado"]))
+if(empty($_SESSION["username"]))
 {
-  $sesion=TRUE;
+  $mvc->irLogin();
 }
+  
 else
 {
-  $sesion=FALSE;
+   $mvc->contenido();
 }
 
 
@@ -55,7 +56,11 @@ else
   else if (isset($_POST['fName']) && isset($_POST['lName'])&& isset($_POST['nickname']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['password2'])  )
   {
     $mvc->registrarUsuario(($_POST['fName']),($_POST['lName']),($_POST['nickname']) ,($_POST['email']) ,($_POST['password']) ,($_POST['password2']) );
-    //echo "que fue ";
+
+  }
+  else if(strstr($_SERVER['REQUEST_URI'], '/micronott/login'))
+  {
+    $mvc->irLogin();
   }
 
   
