@@ -3,15 +3,20 @@
 require 'app/model/class_login.php';
 require 'app/model/conexion_register_ajax_class.php';
 require 'app/model/class.conexion_registroUsuario.php';
-
 class mvc_controller
 {
 	function irLogin()
 	{
-		
-		$html = $this->load_page('app/views/default/login.php');
-		$this->view_page($html);
-		
+		$sesion_iniciada = $this->login_check();
+		if($sesion_iniciada)
+		{
+			$this->contenido();
+		}
+		else
+		{
+			$html = $this->load_page('app/views/default/login.php');
+			$this->view_page($html);
+		}
 	}
 
 	function irRegister()
@@ -100,6 +105,7 @@ class mvc_controller
 
 	function contenido()
 	{
+		$this->sec_session_start();
 		$pagina=$this->load_template('Pagina Principal MVC');				
 		$html = $this->load_page('app/views/default/modules/m.principal.php');
 		$pagina = $this->replace_content('/\#SECTION\#/ms' ,$html , $pagina);
@@ -137,6 +143,30 @@ class mvc_controller
 	{
 		 return preg_replace($in, $out, $pagina);	 	
 	}
+
+	private function sec_session_start() {
+        $session_name = 'sec_session_id'; //Configura un nombre de sesión personalizado
+                        $secure = false; //Configura en verdadero (true) si utilizas https
+                        $httponly = true; //Esto detiene que javascript sea capaz de accesar la identificación de la sesión.
+                        ini_set('session.use_only_cookies', 1); //Forza a las sesiones a sólo utilizar cookies.
+                        $cookieParams = session_get_cookie_params(); //Obtén params de cookies actuales.
+                        session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
+                        session_name($session_name); //Configura el nombre de sesión a el configurado arriba.
+                        session_start(); //Inicia la sesión php
+                        session_regenerate_id(true); //Regenera la sesión, borra la previa.
+                    }
+   private function login_check()
+   {
+   	if (isset($_SESSION['user_id'], $_SESSION['username']))
+   	{
+   		return TRUE;
+   	}
+   	else
+   	{
+   		return FALSE;
+   	}
+   }
+
 }
 
 

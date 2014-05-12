@@ -26,23 +26,31 @@ class Login
 		try
 		{
 			//$sql = "SELECT * from user usr, userscredentials c  WHERE usr.iduser=c.iduser and  usr.nickname =? AND c.password =?";
-			$sql = "SELECT * FROM userscredentials WHERE usrnickname=? and password=?";
+			$sql = "SELECT idUsersCredentials, usrnickname, password FROM userscredentials WHERE usrnickname=? and password=? LIMIT 1";
 			$query = $this->dbh->prepare($sql);
 			$query->bindParam(1,$username);
 			$query->bindParam(2,$password);
 			$query->execute();
+			$rows=$query->fetch(PDO::FETCH_ASSOC);
+			$user_id= $rows['idUsersCredentials'];
 			$this->dbh = null;
 
 			//si existe el usuario
-            if($query->rowCount() == 1)
+            if($query->rowCount()== 1)
             {
             	
-                 
-                 $fila  = $query->fetch();
-                 $_SESSION['username'] = $fila['usrnickname'];
-                 $_SESSION['autenticado'] = 'SI';           
+                $user_id= $rows['idUsersCredentials'];
+                $user_browser = $_SERVER['HTTP_USER_AGENT']; //Obtén el agente de usuario del usuario
+                $user_id = preg_replace("/[^0-9]+/", "", $user_id); //protección XSS ya que podemos imprimir este valor
+                $_SESSION['user_id'] = $user_id;
+                $username = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $username); //protección XSS ya que podemos imprimir este valor
+                $_SESSION['username'] = $username;          
                  return TRUE;
     
+            }
+            else
+            {
+            	return FALSE;
             }
 		}
 		catch(PDOException $e){

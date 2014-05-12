@@ -1,0 +1,35 @@
+<?php if( isset($this->post) &&  count($this->post)):?>
+	<?php for($i=0;$i<count($this->post);$i++):?>
+	<section id='posts' class="posts">
+		<article class="post">
+			<div class="descripcion">
+				<div class="detalles">
+					<h2 class="titulo">
+						<?php echo($this->post[$i]['postContent']);?>
+					</h2>
+					<p class="autor">
+						por <a href="#"><?php echo($this->post[$i]['idUser']);?></a>
+					</p>
+					<a class="tag" href="#"><?php echo($this->post[$i]['idpost']);?></a>
+					<p class="fecha">hace <strong>20</strong> min</p>
+				</div>
+			</div>
+			<div class="acciones">
+				<div class="votos">
+					<a class="up" href="#"></a>
+					<span class="total">156</span>
+					<a class="down" href="#"></a>
+				</div>
+				<div class="datos">
+					<a class="comentarios" href="#">
+						10
+					</a>
+					<a class="estrellita" href="#"></a>
+				</div>
+			</div>
+		</article>
+	</section>
+<?php endfor?>
+<?php else:?>
+<h2>No tienes nott</h2>
+<?php endif?>

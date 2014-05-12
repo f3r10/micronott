@@ -1,0 +1,11 @@
+			<?php if(isset($this->prueba)) echo $this->prueba; ?>
+						
+						<form class="formularioEnvio" method="post" action="<?php echo BASE_URL; ?>post/nuevo">
+							<fieldset  id="smart-content">
+							<p>
+							<input type="text" name="comment" id="comment" class="comment" placehoder="Here your text">
+							</p>
+							<input type="submit" name="enviar" value="Enviar" onclick="addContent()" >
+							</fieldset>
+						</form>
+				
