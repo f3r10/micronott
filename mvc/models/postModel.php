@@ -11,18 +11,18 @@ class postModel extends Model
 		$post = $this->_db->query("select * from post where idUser='$idUsuario' ");
 		return $post->fetchall();
 	}
-	public function insertarPost($titulo, $cuerpo)
+	public function insertarPost($idUser, $cuerpo)
 	{
 		/*$sql= "INSERT INTO `post`(`postContent`, `idUser`) VALUES (?,?) ";
 		$query = $this->_db->prepare($sql);
 		$query->bindParam(1,$cuerpo);
-		$query->bindParam(2,6);
+		$query->bindParam(2,Session::get('idUser'));
 		$query->execute();*/
 
 		if($this->_db->prepare("INSERT INTO post(postContent, idUser) VALUES (:contenido, :idUser)")->execute(
 			array(
 				':contenido' => $cuerpo,
-				':idUser' => $titulo
+				':idUser' => $idUser
 				)
 			))
 		{

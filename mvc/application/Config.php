@@ -7,7 +7,7 @@ define('CONTENIDO_LAYOUT', 'defaultContenido');
 
 define('DB_HOST','localhost');
 define('DB_USER','root');
-define('DB_PASS','root');
+define('DB_PASS','');
 define('DB_NAME','micronott');
 define('DB_CHAR','utf8');
 define('SESSION_TIME',1);
