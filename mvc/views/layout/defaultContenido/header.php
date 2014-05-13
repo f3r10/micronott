@@ -58,6 +58,8 @@
 			<?php endfor; ?>
 			<?php endif; ?>
 		</ul>
+		<a href="index/seguir"><button>Seguir</button></a>
+		
 	</nav>
 	
 	<aside id="container">

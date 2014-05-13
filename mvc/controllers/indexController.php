@@ -5,12 +5,15 @@ class indexController extends Controller
 {
     private $_login;
     private $_loginAndroid;
+	private $_regSeguidor;
     //private $_row;
 	public function __construct()
 	{
 		parent::__construct();
         $this->_login = $this->loadModel('login');
         $this->_loginAndroid = $this->loadModel('loginAndroid');
+		$this->_regSeguidor =$this->loadModel('seguir');
+		
 	}
     public function index()
     {
@@ -108,10 +111,15 @@ class indexController extends Controller
             echo json_encode($response);
 
          }
-         
-
-         
+           
     }
+	
+	public function seguir()
+	{
+		$this->_regSeguidor->registrarSeguir(Session::get('idUser'),$this->getInt('usuario'),$this->getTexto('nickname'));
+		
+				
+	}
 }
 
 ?>

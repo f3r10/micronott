@@ -8,7 +8,8 @@ class postModel extends Model
 
 	public function getPost($idUsuario)
 	{
-		$post = $this->_db->query("select * from post where idUser='$idUsuario' ");
+		$post = $this->_db->query("select p.postContent as Contenido, p.postingTime as Tiempo, p.postStatus as Estado, u.nickname as nickname from post p, user u where p.idUser=u.iduser and p.idUser='$idUsuario'");
+		
 		return $post->fetchall();
 	}
 	public function insertarPost($idUser, $cuerpo)

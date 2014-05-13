@@ -29,7 +29,7 @@ class postController extends Controller
         }
         else
         {
-            $this->_view->prueba = "Debe ingresar contendio en el campo";
+            $this->_view->prueba = "Debe ingresar contenido en el campo";
             exit;
         }
       }

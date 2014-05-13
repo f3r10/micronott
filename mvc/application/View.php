@@ -28,7 +28,11 @@ class View
 				array(
 					'id' => 'seguidos',
 					'titulo' => 'Seguidos',
-					'enlace'=>BASE_URL),
+					'enlace'=>BASE_URL),					
+				array(
+					'id' => 'UsersMicronott',
+					'titulo' => 'Users Micronott',
+					'enlace'=>BASE_URL."UsersMicronott"),	
 				);
 			$menuPrincipal = array(
 				array(
