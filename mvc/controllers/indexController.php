@@ -88,11 +88,13 @@ class indexController extends Controller
         {
             //echo  $this->getPostParam('a');
            // echo $this->getPostParam('a');
-           $row = $this->_loginAndroid->getUsuario($this->getPostParam('username'),12345);
+           $row = $this->_loginAndroid->getUsuario($this->getPostParam('username'),$this->getPostParam('password'));
 
            if($row)
          {
-          echo json_encode($row);
+          $response["success"] = 1;
+            $response["message"] = "Login correct";
+          echo json_encode($response);
          }
          else
          {
