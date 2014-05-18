@@ -32,8 +32,7 @@ CREATE TABLE IF NOT EXISTS `followersuser` (
   `idfollowers` int(11) NOT NULL,
   `nickname` varchar(45) NOT NULL,
   PRIMARY KEY (`idfollowersuser`),
-  UNIQUE KEY `idfollowersuser_UNIQUE` (`idfollowersuser`),
-  UNIQUE KEY `idfollowers` (`idfollowers`)
+  UNIQUE KEY `idfollowersuser_UNIQUE` (`idfollowersuser`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --

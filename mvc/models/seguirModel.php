@@ -10,8 +10,11 @@ class seguirModel extends Model
 	
 	{
 		$post = $this->_db->query("select * from followersuser where iduser='$idUser' and idfollowers='$idCompa'");
+		if($post)
+		{
+			return $post->fetch();	
+		}
 		
-		return $post->fetch();
 		
 	
 	
