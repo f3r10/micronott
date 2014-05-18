@@ -1,6 +1,6 @@
 <?php
 
-define('BASE_URL', 'http://localhost/micronott/mvc/');
+define('BASE_URL', 'http://192.168.0.104/micronott/mvc/');
 define('DEFAULT_CONTROLLER', 'index');
 define('DEFAULT_LAYOUT', 'default');
 define('CONTENIDO_LAYOUT', 'defaultContenido');

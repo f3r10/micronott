@@ -27,7 +27,10 @@ class cargarUsuarioController extends Controller
 				$this->_view->bottonSeguir = $this->_btnParaSeguirUser->comprobarSeguimiento(Session::get('idUser'), $this->getInt('usuario'));
 			}
 			Session::set('idCompa',$this->getInt('usuario'));
-			Session::set('nicknameCompa',$this->getTexto('nickname'));
+			Session::set('nicknameCompa',$this->getPostParam('nickname'));
+			echo Session::get('idCompa');
+			echo Session::get('nicknameCompa');
+			echo Session::get('idUser');
 			$this->_view->post=$this->_post->getPost($this->getInt('usuario'));
 			$this->_view->renderizar('cargarUsuario','post');
 		
@@ -37,9 +40,11 @@ class cargarUsuarioController extends Controller
 
     public function seguir()
 	{
+
 		
-		$this->_btnParaSeguirUser->registrarSeguir(Session::get('idUser'),Session::get('idCompa'),Session::get('nicknameCompa'));
-		$this->redireccionar('cargarUsuario');
+		$resultadoSeguir = $this->_btnParaSeguirUser->registrarSeguir(Session::get('idUser'),Session::get('idCompa'),Session::get('nicknameCompa'));
+		$this->redireccionar();
+	
 
 	}
 	

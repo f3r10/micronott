@@ -22,11 +22,11 @@ class seguirModel extends Model
 	public function registrarSeguir($idUser, $idFollowers,$nickname)
 	{
 		
-		if($this->_db->prepare("INSERT INTO followersuser(iduser, idfollowers,nickname) VALUES (:iduser, :idfollowers, :nickname)")->execute(
+		if($this->_db->prepare("INSERT INTO followersuser(iduser, idfollowers,nickname) VALUES (:iduser,:idfollowers,:nickname)")->execute(
 			array(
-				':iduser' => $idUser,
-				':idfollowers' => $idFollowers,
-				'nickname'=>$nickname
+				":iduser" => $idUser,
+				":idfollowers" => $idFollowers,
+				":nickname"=>$nickname
 				)
 			)
 			)
@@ -35,7 +35,7 @@ class seguirModel extends Model
 		}
 		else
 		{
-			return FALSE;
+			return 'no se registro';
 		}
 			
 	}

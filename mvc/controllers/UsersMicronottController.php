@@ -20,7 +20,7 @@ class UsersMicronottController extends Controller
     {
     	$this->_view->titulo = 'Users Micronott';
         
-		$this->_view->usuariosencontrados=$this->_cargarUsuarios->cargarUsuarios();
+		$this->_view->usuariosencontrados=$this->_cargarUsuarios->cargarUsuarios(Session::get('idUser'));
 		
 		$this->_view->renderizar('UsersMicronott','post');
 		

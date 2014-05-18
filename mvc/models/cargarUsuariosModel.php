@@ -6,10 +6,10 @@ class cargarUsuariosModel extends Model
 		parent::__construct();
 	}
 
-	public function cargarUsuarios()
+	public function cargarUsuarios($iduser)
 	{
 		//$datos = $this->_db->query("SELECT * FROM users");
-		$post = $this->_db->query("SELECT * FROM user");
+		$post = $this->_db->query("SELECT * FROM user where not iduser='$iduser'");
 		
 		if($post)
 		{

@@ -4,18 +4,20 @@
 class postController extends Controller
 {
     private $_post;
+    private $_postSeguidos;
 	public function __construct()
 	{
 		parent::__construct();
         $this->_post = $this->loadModel('post');
+        $this->_postSeguidos = $this->loadModel('postSeguidos');
 	}
     public function index()
     {
       if(!empty(Session::get('idUser')))
       {
-        $this->_view->post=$this->_post->getPost(Session::get('idUser'));
-      $this->_view->titulo = 'Contenido';
-         $this->_view->renderizar('index', 'post');
+        $this->_view->post=$this->_postSeguidos->cargarPostSeguidos(Session::get('idUser'));
+        $this->_view->titulo = 'Contenido';
+        $this->_view->renderizar('index', 'post');
         if( $this->getTexto('comment')!==' ' && $this->getTexto('comment') !== 0 )
         {
             //$this->_view->prueba = $this->getTexto('comment');

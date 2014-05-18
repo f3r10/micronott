@@ -56,12 +56,15 @@ class registroModel extends Model
 			"nickname" => $nickname
 			)))
 			{
+				
 				return true;
 			}
 			else
 			{
 				return false;
 			}
+
+
 
 		}
 		else
