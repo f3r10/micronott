@@ -1,59 +1,37 @@
-<?php 
-  require 'app/controller/mvc.controller.php';
+<?php
+ini_set('display_errors', 1);
 
 
-$mvc = new mvc_controller();
-
-  if(isset($_GET['action']))
-  {
-  	if($_GET['action'] == 'irLogin')
-  	{
-  		$mvc->irLogin();
-  	}
-    else if ($_GET['action'] == 'irRegister')
-    {
-      $mvc->irRegister();
-    }
-    
-  	else
-  	{
-  		 $mvc->principal();
-  	}
-    
-  }
-  else if( isset($_POST['username']) && isset($_POST['password'])  )
-    {
-      $mvc->analizarLogin($_POST['username'], $_POST['password']);
-    }
-
-  else if(isset($_POST['email']) && !isset($_POST['lName']) )
-  {
-    $mvc->analizarRegisterAjax($_POST['email']);
-  }
-  else if(isset($_POST['nickname']) && !isset($_POST['lName'] ))
-  {
-    $mvc->analizarRegisterAjax_nickName($_POST['nickname']);
-  }
-  #else if (strstr($_SERVER['REQUEST_URI'], '/micronott/index.php') || strstr($_SERVER['REQUEST_URI'], '/micronott/') && $sesion)
-  #{
-  #  $mvc->contenido();
- # }
-  else if (isset($_POST['fName']) && isset($_POST['lName'])&& isset($_POST['nickname']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['password2'])  )
-  {
-    $mvc->registrarUsuario(($_POST['fName']),($_POST['lName']),($_POST['nickname']) ,($_POST['email']) ,($_POST['password']) ,($_POST['password2']) );
-
-  }
-  else if(strstr($_SERVER['REQUEST_URI'], '/micronott/login'))
-  {
-    $mvc->irLogin();
-  }
-
-  
-
-  else
-  {
-    $mvc->principal();
-  }
 
 
- ?>
+define('DS', DIRECTORY_SEPARATOR);
+define('ROOT', realpath(dirname(__FILE__)) . DS);
+define('APP_PATH', ROOT . 'application' . DS);
+
+
+
+
+try{
+require_once APP_PATH . 'Config.php';
+require_once APP_PATH . 'Request.php';
+require_once APP_PATH . 'Bootstrap.php';
+require_once APP_PATH . 'Controller.php';
+require_once APP_PATH . 'Model.php';
+require_once APP_PATH . 'View.php';
+require_once APP_PATH . 'Registro.php';
+require_once APP_PATH . 'Database.php';
+require_once APP_PATH . 'Session.php';
+require_once APP_PATH . 'Hash.php';
+
+
+Session::init();
+
+
+    Bootstrap::run(new Request);
+}
+catch(Exception $e){
+    echo $e->getMessage();
+}
+
+
+?>
