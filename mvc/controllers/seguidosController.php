@@ -1,7 +1,7 @@
 <?php
 
 
-class seguidoresController extends Controller
+class seguidosController extends Controller
 {
 	private $_following;
 	public function __construct()
@@ -13,9 +13,9 @@ class seguidoresController extends Controller
     {
     	if(!empty(Session::get('idUser')))
     	{
-    		$this->_view->titulo = 'Seguidores';
-    		$this->_view->usuariosencontrados = $this->_following->userOfFollower(Session::get('idUser'));
-        	$this->_view->renderizar('seguidores','post');
+    		$this->_view->titulo = 'Seguidos';
+    		$this->_view->usuariosencontrados = $this->_following->userOfFollowing(Session::get('idUser'));
+        	$this->_view->renderizar('seguidos','post');
     	}
     	else
     	{

@@ -19,5 +19,28 @@ class postSeguidosModel extends Model
 		return $post->fetchall();
 		}
 	}
+
+	public function userOfFollowing($iduser)
+	{
+		$post = $this->_db->
+		query("SELECT u.iduser as idUser, u.nickname as nickname from  user u   
+			where u.iduser in (SELECT idfollowers FROM followersuser WHERE iduser='$iduser' and not idfollowers='$iduser')");
+		
+		if($post)
+		{
+		return $post->fetchall();
+		}
+	}
+	public function userOfFollower($iduser)
+	{
+		$post = $this->_db->
+		query("SELECT u.iduser as idUser, u.nickname as nickname from  user u   
+			where u.iduser in (SELECT iduser FROM followersuser WHERE idfollowers='$iduser' and not iduser='$iduser')");
+		
+		if($post)
+		{
+		return $post->fetchall();
+		}
+	}
 } 
 ?>

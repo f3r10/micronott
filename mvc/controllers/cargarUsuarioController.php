@@ -35,6 +35,10 @@ class cargarUsuarioController extends Controller
 			$this->_view->renderizar('cargarUsuario','post');
 		
 		}
+		else
+		{
+			$this->_view->renderizar('visitante','visitante');
+		}
 		
     }
 

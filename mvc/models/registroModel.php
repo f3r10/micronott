@@ -46,7 +46,6 @@ class registroModel extends Model
 			":nickname" => $nickname,
 			":email" => $email
 			));
-
 		if($registroUsuario)
 		{
 			
@@ -56,8 +55,21 @@ class registroModel extends Model
 			"nickname" => $nickname
 			)))
 			{
+				$idUser = $this->_db->query("SELECT iduser from user where nickname='$nickname'");
+				$idUser = $idUser->fetch();
+				if($this->_db->prepare("INSERT INTO followersuser (idUser,idfollowers,nickname) values (:iduser,:idseguidor,:nickname)")->execute(array(
+					"iduser" => $idUser['iduser'],
+					"idseguidor" => $idUser['iduser'],
+					"nickname" => $nickname
+					)))
+				{
+					return true;
+				}
+				else
+				{
+					return FALSE;
+				}
 				
-				return true;
 			}
 			else
 			{

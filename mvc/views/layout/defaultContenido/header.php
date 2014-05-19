@@ -47,7 +47,7 @@
 			<figure class="avatar">
 				<img src="<?php echo $_layoutParams['ruta_img'] ?>unknown.png" alt="freddier" />
 			</figure>
-			<a class="flechita" href="#"></a>
+			<a class="flechita" href="index/cerrar"></a>
 		</div>
 	</header>
 	<nav>
@@ -58,7 +58,6 @@
 			<?php endfor; ?>
 			<?php endif; ?>
 		</ul>
-		<a href="index/seguir"><button>Seguir</button></a>
 		
 	</nav>
 	

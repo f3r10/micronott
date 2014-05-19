@@ -22,13 +22,14 @@ class View
 					'titulo' => 'Inicio',
 					'enlace'=>BASE_URL),
 				array(
+					'id' => 'seguidos',
+					'titulo' => 'Seguidos',
+					'enlace'=>BASE_URL . 'seguidos'),	
+				array(
 					'id' => 'seguidores',
 					'titulo' => 'Seguidores',
 					'enlace'=>BASE_URL . 'seguidores'),
-				array(
-					'id' => 'seguidos',
-					'titulo' => 'Seguidos',
-					'enlace'=>BASE_URL),					
+								
 				array(
 					'id' => 'UsersMicronott',
 					'titulo' => 'Users Micronott',
@@ -43,6 +44,10 @@ class View
 					'id' => 'registro',
 					'titulo' => 'Register',
 					'enlace'=>BASE_URL . 'registro'),
+				array(
+					'id' => 'visita',
+					'titulo' => 'Visitante',
+					'enlace'=>BASE_URL . 'visitante'),
 				);
 		if(Session::get('autenticado'))
 		{
@@ -60,7 +65,7 @@ class View
 					'titulo' => 'Iniciar Sesion',
 					'enlace'=>BASE_URL . 'index');
 		}
-		if($item!='post'){
+		if($item!='post' && $item!='visitante' ){
 		$_layoutParams = array(
 			'ruta_css' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/',
 			 'ruta_img' =>  BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/imagenes/',
@@ -103,6 +108,27 @@ class View
 			throw new Exception ('Error de vista');
 		}
 		}
+		else if ($item === 'visitante')
+		{
+			$_layoutParams = array(
+			'ruta_css' => BASE_URL . 'views/layout/' . VISITANTE_LAYOUT . '/css/',
+			 'ruta_img' =>  BASE_URL . 'views/layout/' .VISITANTE_LAYOUT . '/imagenes/',
+			 'ruta_js' =>   BASE_URL .'views/layout/' . VISITANTE_LAYOUT. '/js/',
+			);
+
+		$rutaView = ROOT . 'views' . DS . $this->_controlador . DS . $vista . '.phtml';
+		if(is_readable($rutaView))
+		{
+			include_once ROOT . 'views' . DS . 'layout' . DS . VISITANTE_LAYOUT . DS . 'header.php';
+			include_once $rutaView;
+			include_once ROOT . 'views' . DS . 'layout' . DS . VISITANTE_LAYOUT . DS . 'footer.php';
+		}
+		else
+		{
+			throw new Exception ('Error de vista');
+		}
+		}
 	}
-}
+	}
+
 ?>

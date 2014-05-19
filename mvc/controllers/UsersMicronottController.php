@@ -32,8 +32,6 @@ class UsersMicronottController extends Controller
 		{
 			$this->_idUsuario = $this->getInt('usuario');
 			$this->_nickname = $this->getText('nickname');
-			echo $this->_idUsuario;
-			echo $this->_nickname;
 			$this->_view->post=$this->_post->getPost($this->getInt('usuario'));
 			$this->_view->renderizar('cargarUsuario','post');
 		

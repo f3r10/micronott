@@ -24,7 +24,6 @@ class registroController extends Controller
             if($this->getInt('enviar') == 1)
             { 
                 
-                echo "entra el submit";
                 $this->_view->datos = $_POST;
                 if(!$this->getPostParam('name'))
                 {
@@ -43,13 +42,14 @@ class registroController extends Controller
                 }
                 if ($this->_registro->verificarUsuario($this->getAlphaNum('nickname')))
                 {
-                   echo "existe el usuario";
-                    $this->_view->renderizar('registro');
+                    echo "existe el usuario";
+                    exit;
+
                 }
                 if ($this->_registro->verificarMail($this->getPostParam('email')))
                 {
                     echo  "exite el mail";
-                    $this->_view->renderizar('registro');
+                    exit;
                 }
                 else
                 {

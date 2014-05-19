@@ -4,6 +4,7 @@ define('BASE_URL', 'http://localhost/micronott/micronott/mvc/');
 define('DEFAULT_CONTROLLER', 'index');
 define('DEFAULT_LAYOUT', 'default');
 define('CONTENIDO_LAYOUT', 'defaultContenido');
+define('VISITANTE_LAYOUT', 'defaultVisitante');
 
 define('DB_HOST','localhost');
 define('DB_USER','root');
