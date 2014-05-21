@@ -1,0 +1,17 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="<?php echo $_layoutParams['ruta_css'] ?>configureacc.css">    
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption' rel='stylesheet' type='text/css'>
+ </head>
+<section id="formMain">
+        <form class="configure" method="POST" action="configureAccount/addPhotos" enctype="multipart/form-data">
+        <input type="hidden" value="1" name="enviar">
+        <h2>Configuración de la Cuenta</h2>
+      
+    <label for="SubirFoto">Seleccionar Foto de Perfil <input type="file" class="text-field" placeholder="foto" id="foto" name="photo" required/></label><br/>
+    <input type="text" class="text-field" placeholder="Caption" id="caption" name="caption" required/><br/>
+    <input type="textarea" class="text-field" placeholder="Descripción del Perfil" id="desc" name="commet" required/><br/>
+
+    <input type="submit" value="Actualizar Datos" id="actualizar"/>
+
+</form>
+    </section>

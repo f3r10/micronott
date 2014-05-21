@@ -34,7 +34,13 @@ class View
 					'id' => 'UsersMicronott',
 					'titulo' => 'Users Micronott',
 					'enlace'=>BASE_URL."UsersMicronott"),	
-				);
+				
+				array(
+					'id' => 'configureAccount',
+					'titulo' => 'Configuración de la Cuenta',
+					'enlace'=>BASE_URL."configureAccount"),	
+				);				
+				
 			$menuPrincipal = array(
 				array(
 					'id' => 'login',
@@ -47,7 +53,7 @@ class View
 				array(
 					'id' => 'visita',
 					'titulo' => 'Visitante',
-					'enlace'=>BASE_URL . 'visitante'),
+					'enlace'=>BASE_URL . 'visitante'),				
 				);
 		if(Session::get('autenticado'))
 		{

@@ -45,6 +45,7 @@
 		</div>
 		<div class="usuario">
 			<figure class="avatar">
+				
 				<img src="<?php echo $_layoutParams['ruta_img'] ?>unknown.png" alt="freddier" />
 			</figure>
 			<a class="flechita" href="index/cerrar"></a>
@@ -65,6 +66,8 @@
 		<div class="perfil">
 		<div class="logo2">
 			<img src="<?php echo $_layoutParams['ruta_img'] ?>unknown.png" alt="freddier" />
+
+			
 		</div>
 		<div class="datosContenido">
 			<a href="#" class="comentarios">12</a>

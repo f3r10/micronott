@@ -1,6 +1,6 @@
 <footer>
 		<h3>
-			<strong>Powered by N4nd0</strong>
+			<strong>Powered by Micronott Comnunity</strong>
 			<span class="mejor">
 				aplicaciones web 2014-A
 			</span>
