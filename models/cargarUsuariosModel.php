@@ -42,9 +42,9 @@ class cargarUsuariosModel extends Model
 		}
 	}
 
-	public function photoUsuario($idUser)
+	public function photoUser($idUser)
 	{
-		$post = $this->_db->query("SELECT location from photosuser where iduser='$iduser' ");
+		$post = $this->_db->query("SELECT location from photosuser where iduser='$idUser'");
 		
 		if($post)
 		{

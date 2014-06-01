@@ -28,6 +28,7 @@ class androidController extends Controller
     {
       if($this->getPostParam('username'))
         {
+          Session::destroy();
             //echo  $this->getPostParam('a');
            // echo $this->getPostParam('a');
            $row = $this->_loginAndroid->getUsuario($this->getPostParam('username'),$this->getPostParam('password'));
@@ -42,6 +43,7 @@ class androidController extends Controller
          }
          else
          {
+
             $response["success"] = 0;
             $response["message"] = "Login incorrect";
             echo json_encode($response);
@@ -164,15 +166,21 @@ class androidController extends Controller
 
     public function addPhotosAndroid()
     {
-    $file_path = "photos/";
+
+    
+
+
+             $file_path = "photos/";
+         
+        $file_path = $file_path . basename( $_FILES['uploaded_file']['name']);
+        if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $file_path)) {
+            echo "success";
+            $this->_fotos->insertPhotos($_POST['param1'],$file_path,"foto del usuario");
+        } else{
+            echo "fail";
+        }
      
-    $file_path = $file_path . basename( $_FILES['uploaded_file']['name']);
-    if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $file_path)) {
-        echo "success";
-        $this->_fotos->insertPhotos(16,$file_path,"foto del usuario");
-    } else{
-        echo "fail";
-    }
+   
     }
 
     public function allUser()
@@ -255,12 +263,12 @@ class androidController extends Controller
 
     public function profileUsuario()
     {
-      
+     
        if($this->_cargarUsuarios->profileUser($this->getPostParam('idUser')))
       {
         $response["success"] = 1;
         $response["userProfile"] = $this->_cargarUsuarios->profileUser($this->getPostParam('idUser'));
-        //$response["photo"] = BASE_URL . $this->_cargarUsuarios->photoUser($this->getPostParam('idUser'));
+        $response["photo"] = $this->_cargarUsuarios->photoUser($this->getPostParam('idUser'));
         echo json_encode($response);
       }
       else

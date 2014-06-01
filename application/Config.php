@@ -1,6 +1,6 @@
 <?php
 
-define('BASE_URL', 'http://192.168.0.105/micronott/micronott/');
+define('BASE_URL', 'http://192.168.0.100/micronott/micronott/');
 define('DEFAULT_CONTROLLER', 'index');
 define('DEFAULT_LAYOUT', 'default');
 define('CONTENIDO_LAYOUT', 'defaultContenido');
