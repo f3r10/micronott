@@ -168,17 +168,31 @@ class androidController extends Controller
     {
 
     
-
+      if($this->_fotos->deletePhoto($_POST['param1']))
+      {
 
              $file_path = "photos/";
          
         $file_path = $file_path . basename( $_FILES['uploaded_file']['name']);
         if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $file_path)) {
-            echo "success";
+            
             $this->_fotos->insertPhotos($_POST['param1'],$file_path,"foto del usuario");
+             $response["success"] = 1;
+             $response["message"] = "imagen insertada";
+            echo json_encode($response);
         } else{
-            echo "fail";
+             $response["success"] = 0;
+             $response["message"] = "imagen no se inserto";
+            echo json_encode($response);
         }
+      }
+      else
+      {
+        $response["success"] = 0;
+             $response["message"] = "imagen previa no borrada";
+            echo json_encode($response);
+      }
+
      
    
     }
@@ -294,12 +308,58 @@ class androidController extends Controller
     }
     else
     {
-       $response["success"] = 1;
+       $response["success"] = 0;
         $response["message"] = "error al seguir ";
         echo json_encode($response);
     }
  
 
+  }
+
+  public function updateProfileUsuario()
+  {
+    if($this->getPostParam("email"))
+    {
+      $resultado = $this->_cargarUsuarios->updateProfile($this->getPostParam("email"),$this->getPostParam("descripcion"),$this->getPostParam("idUser"));
+      if($resultado)
+      {
+         $response["success"] = 1;
+        $response["message"] = "actualizado datos";
+        echo json_encode($response);
+      }
+      else
+      {
+        $response["success"] = 0;
+        $response["message"] = "no se actualizaron los datos";
+        echo json_encode($response);
+      }
+    }
+  }
+
+  public function stopFollow()
+  {
+    if($this->getPostParam("idUser"))
+    {
+      $stop = $this->_btnParaSeguirUser->stopFollow($this->getPostParam('idUser'),$this->getPostParam('idUserAmigo'));
+      if($stop)
+      {
+         $response["success"] = 1;
+        $response["message"] = "stop follow";
+        echo json_encode($response);
+      }
+      else
+      {
+        $response["success"] = 0;
+        $response["message"] = "problem with stop";
+        echo json_encode($response);
+      }
+    }
+    else
+    {
+       $response["success"] = 0;
+        $response["message"] = "parametros incorrectos";
+        echo json_encode($response);
+    }
   }
 
 

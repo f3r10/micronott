@@ -23,6 +23,18 @@ class insertarFotosModel extends Model
 		}
 	
 }
+	public function deletePhoto($idUser)
+	{
+		$delete = $this->_db->query("DELETE from photosuser WHERE idUser='$idUser'");
+		if($delete)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 } 
 ?>
 

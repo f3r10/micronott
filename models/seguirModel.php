@@ -42,5 +42,19 @@ class seguirModel extends Model
 		}
 			
 	}
+
+	public function stopFollow($idUser, $idUserFriend)
+	{
+		$delete = $this->_db->query("DELETE from followersuser WHERE idUser='$idUser' and idfollowers = '$idUserFriend'");
+		if($delete)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
 } 
 ?>

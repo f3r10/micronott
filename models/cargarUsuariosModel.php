@@ -51,5 +51,21 @@ class cargarUsuariosModel extends Model
 		return $post->fetchall();
 		}
 	}
+
+	public function updateProfile($email,$descripcion ,$idUser)
+	{
+		$desc = $this->_db->query("UPDATE profile set userProfileDesc = '$descripcion' WHERE idUser='$idUser'");
+		$email = $this->_db->query("UPDATE user set email = '$email' WHERE idUser='$idUser'");
+		if($desc && $email)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	
 } 
 ?>
