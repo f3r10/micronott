@@ -50,8 +50,9 @@ class configureAccountController extends Controller
         }
         
     }
-         
-    }
+}
+
+    
 
 
 

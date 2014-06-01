@@ -17,5 +17,7 @@ class loginAndroidModel extends Model
 
 		return $datos->fetch();
 	}
+
+	
 } 
 ?>

@@ -27,5 +27,29 @@ class cargarUsuariosModel extends Model
 		return $post->fetchall();
 		}
 	}
+
+	public function profileUser($idUser)
+	{
+		$post = $this->_db->query("SELECT u.name as nombre, u.nickname as nickname, 
+			u.email as email, p.userProfileDesc as descripcion
+		 from user u, profile p
+		 where u.idUser=p.idUser
+		 and u.idUser ='$idUser'");
+		
+		if($post)
+		{
+		return $post->fetchall();
+		}
+	}
+
+	public function photoUsuario($idUser)
+	{
+		$post = $this->_db->query("SELECT location from photosuser where iduser='$iduser' ");
+		
+		if($post)
+		{
+		return $post->fetchall();
+		}
+	}
 } 
 ?>

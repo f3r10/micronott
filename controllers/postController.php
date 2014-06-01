@@ -47,8 +47,9 @@ class postController extends Controller
     {
       Session::accesoEstricto(array('usuario'));
        $this->_view->titulo = 'Nuevo Post';
+       $time = date( 'Y-m-d H:i:s', time() );
        //$this->_view->prueba = $this->getTexto('comment');
-       if($this->_post->insertarPost(Session::get('idUser'),$this->getTexto('comment')))
+       if($this->_post->insertarPost(Session::get('idUser'),$this->getTexto('comment'),$time))
        {
         return TRUE;
        }

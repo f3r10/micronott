@@ -12,7 +12,7 @@ class postModel extends Model
 		
 		return $post->fetchall();
 	}
-	public function insertarPost($idUser, $cuerpo)
+	public function insertarPost($idUser, $cuerpo, $time)
 	{
 		/*$sql= "INSERT INTO `post`(`postContent`, `idUser`) VALUES (?,?) ";
 		$query = $this->_db->prepare($sql);
@@ -20,10 +20,11 @@ class postModel extends Model
 		$query->bindParam(2,Session::get('idUser'));
 		$query->execute();*/
 
-		if($this->_db->prepare("INSERT INTO post(postContent, idUser) VALUES (:contenido, :idUser)")->execute(
+		if($this->_db->prepare("INSERT INTO post(postContent, postingTime ,idUser) VALUES (:contenido,:time , :idUser)")->execute(
 			array(
 				':contenido' => $cuerpo,
-				':idUser' => $idUser
+				':idUser' => $idUser,
+				':time' => $time
 				)
 			))
 		{

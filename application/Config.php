@@ -1,6 +1,6 @@
 <?php
 
-define('BASE_URL', 'http://localhost/mvc/');
+define('BASE_URL', 'http://192.168.0.105/micronott/micronott/');
 define('DEFAULT_CONTROLLER', 'index');
 define('DEFAULT_LAYOUT', 'default');
 define('CONTENIDO_LAYOUT', 'defaultContenido');
@@ -8,7 +8,7 @@ define('VISITANTE_LAYOUT', 'defaultVisitante');
 
 define('DB_HOST','localhost');
 define('DB_USER','root');
-define('DB_PASS','');
+define('DB_PASS','root');
 define('DB_NAME','micronott');
 define('DB_CHAR','utf8');
 define('SESSION_TIME',1);
