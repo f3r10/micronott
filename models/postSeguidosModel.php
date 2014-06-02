@@ -27,8 +27,12 @@ class postSeguidosModel extends Model
 	public function userOfFollowing($iduser)
 	{
 		$post = $this->_db->
-		query("SELECT u.iduser as idUser, u.name as nombre, u.surename as apellido, u.nickname as nickname from  user u   
-			where u.iduser in (SELECT idfollowers FROM followersuser WHERE iduser='$iduser' and not idfollowers='$iduser')");
+		query("SELECT u.iduser as idUser, u.name as nombre,
+		      u.surename as apellido, u.nickname as nickname, ph.location as location
+		      from  user u, photosuser ph
+			where
+			u.idUser = ph.idUser 
+			and u.iduser in (SELECT idfollowers FROM followersuser WHERE iduser='$iduser' and not idfollowers='$iduser')");
 		
 		if($post)
 		{
@@ -38,8 +42,12 @@ class postSeguidosModel extends Model
 	public function userOfFollower($iduser)
 	{
 		$post = $this->_db->
-		query("SELECT u.iduser as idUser, u.name as nombre, u.surename as apellido, u.nickname as nickname from  user u   
-			where u.iduser in (SELECT iduser FROM followersuser WHERE idfollowers='$iduser'  and not iduser='$iduser')");
+		query("SELECT u.iduser as idUser, u.name as nombre, 
+			u.surename as apellido, u.nickname as nickname, ph.location as location 
+			from  user u, photosuser ph 
+			where 
+			u.idUser=ph.idUser
+			and u.iduser in (SELECT iduser FROM followersuser WHERE idfollowers='$iduser'  and not iduser='$iduser')");
 		
 		if($post)
 		{
@@ -83,9 +91,10 @@ class postSeguidosModel extends Model
 	{
 		$post = $this->_db->
 		query("SELECT DISTINCT u.iduser as idUser, u.name as nombre, 
-			u.surename as apellido, u.nickname as nickname, p.userProfileDesc as descripcion
-			from user u, profile p 
+			u.surename as apellido, u.nickname as nickname, p.userProfileDesc as descripcion,ph.location as location
+			from user u, profile p, photosuser ph
 			where u.iduser = p.iduser
+			and u.iduser= ph.iduser
 			and not p.iduser = '$iduser'
 			and u.iduser 
 			not in 
