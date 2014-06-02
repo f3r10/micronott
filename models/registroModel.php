@@ -69,6 +69,13 @@ class registroModel extends Model
 					"userProfileDesc" =>"pon tu descripcion",
 					"lastProfileChange" => $time
 					));
+
+					$this->_db->prepare("INSERT INTO photosuser(iduser,location,caption)values(:iduser,:location,:caption)")->execute(			
+					array(
+					":iduser" => $idUser['iduser'],
+					":location" => "photos/unknown.png",
+					":caption" => "foto del usuario",
+					));
 					return true;
 				}
 				else
