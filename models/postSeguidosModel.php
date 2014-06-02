@@ -10,8 +10,10 @@ class postSeguidosModel extends Model
 	{
 		//$datos = $this->_db->query("SELECT * FROM users");
 		$post = $this->_db->
-		query("SELECT  p.postContent as Contenido, p.postingTime, u.nickname as nickname from post p, user u 
-			where p.iduser=u.iduser   
+		query("SELECT  p.postContent as Contenido, p.postingTime, u.nickname as nickname,ph.location as location 
+			from post p, user u, photosuser ph
+			where p.iduser=u.iduser 
+			and u.iduser = ph.iduser
 			and p.iduser in (SELECT idfollowers FROM followersuser WHERE iduser='$iduser') order by idpost DESC");
 		
 		if($post)
@@ -19,6 +21,8 @@ class postSeguidosModel extends Model
 		return $post->fetchall();
 		}
 	}
+
+	
 
 	public function userOfFollowing($iduser)
 	{
@@ -47,8 +51,10 @@ class postSeguidosModel extends Model
 	{
 		//$datos = $this->_db->query("SELECT * FROM users");
 		$post = $this->_db->
-		query("SELECT  p.postContent as Contenido, p.postingTime, u.nickname as nickname from post p, user u 
+		query("SELECT  p.postContent as Contenido, p.postingTime, u.nickname as nickname ,ph.location as location
+			from post p, user u , photosuser ph
 			where p.iduser=u.iduser
+			and u.iduser = ph.iduser
 			and p.postingTime > '$time'  
 			and p.iduser in (SELECT idfollowers FROM followersuser WHERE iduser='$iduser' ) order by idpost DESC");
 		
