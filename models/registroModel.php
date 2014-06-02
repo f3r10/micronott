@@ -63,6 +63,12 @@ class registroModel extends Model
 					"nickname" => $nickname
 					)))
 				{
+					$time = date( 'Y-m-d H:i:s', time() );
+					$this->_db->prepare("INSERT INTO profile (idUser,userProfileDesc,lastProfileChange) values (:iduser,:userProfileDesc,:lastProfileChange)")->execute(array(
+					"iduser" => $idUser['iduser'],
+					"userProfileDesc" =>"pon tu descripcion",
+					"lastProfileChange" => $time
+					));
 					return true;
 				}
 				else
