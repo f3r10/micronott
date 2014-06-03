@@ -8,6 +8,7 @@ class cargarUsuarioController extends Controller
 	private $_nickname;
 	private $_idUsuario;
 	private $_insertarFotos;
+	private $_perfil;
 
 
 	public function __construct()
@@ -16,6 +17,7 @@ class cargarUsuarioController extends Controller
 		$this->_post = $this->loadModel('post');
 		$this->_btnParaSeguirUser = $this->loadModel('seguir');
 		$this->_insertarFotos = $this->loadModel('insertarFotos');
+		$this->_perfil = $this->loadModel('profile');
 	}
     public function index()
     {
@@ -30,11 +32,11 @@ class cargarUsuarioController extends Controller
 			}
 			Session::set('idCompa',$this->getInt('usuario'));
 			Session::set('nicknameCompa',$this->getPostParam('nickname'));
-			echo Session::get('idCompa');
-			echo Session::get('nicknameCompa');
-			echo Session::get('idUser');
 			$this->_view->post=$this->_post->getPost($this->getInt('usuario'));
 			$this->_view->foto = $this->_insertarFotos->getPhoto(Session::get('idUser'));
+			$this->_view->fotoUser = $this->_insertarFotos->getPhoto($this->getPostParam('usuario'));
+            $this->_view->profile = $this->_perfil->getDescripcion($this->getPostParam('usuario'));
+            $this->_view->nombreUsuarioMicronott = $this->getPostParam('nickname');
 			$this->_view->renderizar('cargarUsuario','post');
 		
 		}

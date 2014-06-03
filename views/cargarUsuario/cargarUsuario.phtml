@@ -3,6 +3,10 @@
 <?php else:?>
 <a href="cargarUsuario/seguir"><button id="seguirBotton" >Seguir a este usuario</button></a>
 <?php endif?>
+<h1>Perfil del usuario <?php echo $this->nombreUsuarioMicronott ?></h1>
+	<img src="<?php echo BASE_URL .  $this->fotoUser['location']  ?>" alt="nombre <?php echo $this->nombreUsuarioMicronott ?>"/>
+	<h4><?php echo $this->fotoUser['caption']  ?></h4>
+	<h2><?php echo $this->profile['userProfileDesc'] ?></h2>
 <?php if( isset($this->post) &&  count($this->post)):?>
 	<?php for($i=0;$i<count($this->post);$i++):?>
 	<section id='posts' class="posts">
