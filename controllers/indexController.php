@@ -4,15 +4,16 @@
 class indexController extends Controller
 {
     private $_login;
-    private $_loginAndroid;
+    private $_insertarFotos;
 	private $_regSeguidor;
+
     //private $_row;
 	public function __construct()
 	{
 		parent::__construct();
         $this->_login = $this->loadModel('login');
-        $this->_loginAndroid = $this->loadModel('loginAndroid');
-		$this->_regSeguidor =$this->loadModel('seguir');
+		    $this->_regSeguidor =$this->loadModel('seguir');
+        $this->_insertarFotos = $this->loadModel('insertarFotos');
 		
 	}
     public function index()
@@ -51,6 +52,7 @@ class indexController extends Controller
             }
             else
             {
+            
             Session::set('autenticado',true);
             Session::set('level','usuario');
             Session::set('tiempo',time());
@@ -82,39 +84,7 @@ class indexController extends Controller
         $this->redireccionar();
     }
 
-    public function android()
-    {
-         if($this->getPostParam('username'))
-        {
-            //echo  $this->getPostParam('a');
-           // echo $this->getPostParam('a');
-           $row = $this->_loginAndroid->getUsuario($this->getPostParam('username'),$this->getPostParam('password'));
-
-           if($row)
-         {
-          $response["success"] = 1;
-            $response["message"] = "Login correct";
-          echo json_encode($response);
-         }
-         else
-         {
-            $response["success"] = 0;
-            $response["message"] = "Login incorrect";
-            echo json_encode($response);
-
-         }
-        
-           
-        }
-         else
-         {
-            $response["success"] = 0;
-            $response["message"] = "Database Error1. Please Try Again!";
-            echo json_encode($response);
-
-         }
-           
-    }
+   
 	
 	public function seguir()
 	{

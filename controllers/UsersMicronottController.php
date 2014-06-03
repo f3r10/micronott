@@ -8,6 +8,7 @@ class UsersMicronottController extends Controller
 	private $_regSeguidor;
 	private $_nickname;
 	private $_idUsuario;
+	private $_insertarFotos;
 
 	public function __construct()
 	{
@@ -15,14 +16,24 @@ class UsersMicronottController extends Controller
 		$this->_cargarUsuarios = $this->loadModel('cargarUsuarios');
 		$this->_post = $this->loadModel('post');
 		$this->_regSeguidor =$this->loadModel('seguir');
+		$this->_insertarFotos = $this->loadModel('insertarFotos');
 	}
     public function index()
     {
+    	if(!empty(Session::get('idUser')))
+        {
     	$this->_view->titulo = 'Users Micronott';
         
 		$this->_view->usuariosencontrados=$this->_cargarUsuarios->cargarUsuarios(Session::get('idUser'));
+		$this->_view->foto = $this->_insertarFotos->getPhoto(Session::get('idUser'));
 		
 		$this->_view->renderizar('UsersMicronott','post');
+		}
+		else
+		{
+			$this->redireccionar();
+		}
+
 		
     }
 	
@@ -37,6 +48,11 @@ class UsersMicronottController extends Controller
 		
 		
 		
+		}
+		else
+		{
+			$this->redireccionar();
+
 		}
 	}
 

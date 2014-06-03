@@ -5,11 +5,13 @@ class postController extends Controller
 {
     private $_post;
     private $_postSeguidos;
+    private $_insertarFotos;
 	public function __construct()
 	{
 		parent::__construct();
         $this->_post = $this->loadModel('post');
         $this->_postSeguidos = $this->loadModel('postSeguidos');
+        $this->_insertarFotos = $this->loadModel('insertarFotos');
 	}
     public function index()
     {
@@ -17,6 +19,8 @@ class postController extends Controller
       {
         $this->_view->post=$this->_postSeguidos->cargarPostSeguidos(Session::get('idUser'));
         $this->_view->titulo = 'Contenido';
+        $this->_view->foto = $this->_insertarFotos->getPhoto(Session::get('idUser'));
+      
         $this->_view->renderizar('index', 'post');
         if( $this->getTexto('comment')!==' ' && $this->getTexto('comment') !== 0 )
         {

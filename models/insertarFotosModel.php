@@ -35,6 +35,19 @@ class insertarFotosModel extends Model
 			return false;
 		}
 	}
+
+	public function getPhoto($idUser)
+	{
+		$get = $this->_db->query("SELECT location, caption from photosuser where iduser = '$idUser' ");
+		if($get)
+		{
+			return $get->fetch();
+		}
+		else
+		{
+			return "photos/unknown.png";
+		}
+	}
 } 
 ?>
 

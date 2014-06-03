@@ -46,7 +46,7 @@
 		<div class="usuario">
 			<figure class="avatar">
 				
-				<img src="<?php echo $_layoutParams['ruta_img'] ?>unknown.png" alt="freddier" />
+				<img src="<?php echo $this->foto['location'] ?>" alt="freddier" />
 			</figure>
 			<a class="flechita" href="index/cerrar"></a>
 		</div>
@@ -65,7 +65,7 @@
 	<aside id="container">
 		<div class="perfil">
 		<div class="logo2">
-			<img src="<?php echo $_layoutParams['ruta_img'] ?>unknown.png" alt="freddier" />
+			<img src="<?php echo $this->foto['location'] ?>" alt="freddier" />
 
 			
 		</div>

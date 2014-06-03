@@ -7,6 +7,7 @@ class cargarUsuarioController extends Controller
 	private $_btnParaSeguirUser;
 	private $_nickname;
 	private $_idUsuario;
+	private $_insertarFotos;
 
 
 	public function __construct()
@@ -14,6 +15,7 @@ class cargarUsuarioController extends Controller
 		parent::__construct();
 		$this->_post = $this->loadModel('post');
 		$this->_btnParaSeguirUser = $this->loadModel('seguir');
+		$this->_insertarFotos = $this->loadModel('insertarFotos');
 	}
     public function index()
     {
@@ -32,6 +34,7 @@ class cargarUsuarioController extends Controller
 			echo Session::get('nicknameCompa');
 			echo Session::get('idUser');
 			$this->_view->post=$this->_post->getPost($this->getInt('usuario'));
+			$this->_view->foto = $this->_insertarFotos->getPhoto(Session::get('idUser'));
 			$this->_view->renderizar('cargarUsuario','post');
 		
 		}
