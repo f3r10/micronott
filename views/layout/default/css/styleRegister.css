@@ -8,6 +8,29 @@ color:#191919;
 width:350px;
 margin:auto;
 }
+
+#div1,#div2{
+	float: right;
+}
+#usuario,#mail{
+	padding-top:15%; 
+	border: none;
+	color: red;
+	padding-right: 50px;
+}
+#h2{
+	padding-left: 80px;
+}
+#botonregister{
+margin-left: 12%;
+
+}
+/*#mail{
+	padding-top: 15%;
+	border: none;
+}*/
+
+
 nav {
 	position: fixed;
 	top: 10px;
@@ -59,12 +82,15 @@ form {
 	background: white;
 	border-radius: 3px;
 	box-shadow: 0 0 10px rgba(0,0,0, .4); 
-	text-align: center;
+	text-align: left;
 	padding-top: 1px;
+
 }
 
 form.register{																				/* Register form height */
 	height: 420px;
+	width:  485px;
+	padding-left: 20px;
 }
 
 form .text-field {																			/* Input fields; Username, Password etc. */
