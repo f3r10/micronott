@@ -1,7 +1,7 @@
 <?php if( isset($this->post) &&  count($this->post)):?>
 	<?php for($i=0;$i<count($this->post);$i++):?>
 	<section id='posts' class="posts">
-		<article class="post">
+		<article class="post" id="<?php echo($this->post[$i]['nickname']);?>">
 			<div class="descripcion">
 				<div class="detalles">
 					<h2 class="titulo">
@@ -10,13 +10,23 @@
 					<p class="autor">
 						por <a href="#"><?php echo($this->post[$i]['nickname']);?></a>
 					</p>
-					
+
+					<div class="hidden" id="<?php echo $i ?>">
+						<p>mensaje retwitteado con exito </p>
+					</div>
+					<?php if(count($this->post[$i][5])!=0): ?>
+					<p>retweet por <?php echo implode(' ; ',$this->post[$i][5]) ?></p>
+					<?php endif ?>
 					<p class="fecha">hace <strong><?php echo($this->post[$i]['postingTime']);?></strong> min</p>
 				</div>
 			</div>
 			<div class="acciones">
 				<div class="votos">
-					<a class="up" href="#"></a>
+					<?php if($this->post[$i]['nickname']!=$this->user): ?>
+					<a class="up" href="#" onclick="retweet('<?php echo($this->post[$i]['nickname']);?>','<?php echo $this->user ?>', '<?php echo($this->post[$i]['postingTime']);?>','<?php echo BASE_URL ?>','<?php echo $i?>')"></a>
+				<?php else: ?>
+				<a class="up" href="#"></a>
+			<?php endif; ?>
 					<span class="total">156</span>
 					<a class="down" href="#"></a>
 				</div>

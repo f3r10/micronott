@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="<?php echo $_layoutParams['ruta_css'] ?>normalize.css" />
 	<link rel="stylesheet" href="<?php echo $_layoutParams['ruta_css'] ?>puls4.css" />
 	<script src="<?php echo $_layoutParams['ruta_js'] ?>jquery-2.1.0.min.js"></script>
+	<script src="<?php echo $_layoutParams['ruta_js'] ?>retweet.js"></script>
 </head>
 <body>
 	<header>

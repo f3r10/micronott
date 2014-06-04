@@ -10,7 +10,7 @@ class postSeguidosModel extends Model
 	{
 		//$datos = $this->_db->query("SELECT * FROM users");
 		$post = $this->_db->
-		query("SELECT  p.postContent as Contenido, p.postingTime, u.nickname as nickname,ph.location as location 
+		query("SELECT p.idpost as post,  p.postContent as Contenido, p.postingTime, u.nickname as nickname,ph.location as location 
 			from post p, user u, photosuser ph
 			where p.iduser=u.iduser 
 			and u.iduser = ph.iduser
@@ -104,6 +104,18 @@ class postSeguidosModel extends Model
 		{
 		return $post->fetchall();
 		}
+	}
+
+	public function getRetweet($idUser)
+	{
+		$post = $this->_db->query("SELECT r.idpost as idpost ,u.nickname as nickname
+						FROM retweet r, user u 
+						WHERE r.iduser=u.iduser 
+						and idOwner='$idUser'");
+		
+			return $post->fetchall();
+	
+
 	}
 
 	

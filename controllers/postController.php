@@ -15,13 +15,52 @@ class postController extends Controller
 	}
     public function index()
     {
+      $numberTweet = 0;
       if(!empty(Session::get('idUser')))
       {
-        $this->_view->post=$this->_postSeguidos->cargarPostSeguidos(Session::get('idUser'));
+        $post=$this->_postSeguidos->cargarPostSeguidos(Session::get('idUser'));
+        //$this->_view->post=$this->_postSeguidos->cargarPostSeguidos(Session::get('idUser'));
+        //echo ($post[0]['post']);
+        
+        //print_r($post[0]);
+       // $post[0] = array("ret"=>12);
+        $retweet=$this->_postSeguidos->getRetweet(Session::get('idUser'));
+        //print_r($post[0][5]['ret']);
+        //print_r($retweet[1]['idpost']);
+        $this->_view->user=Session::get('usuario');
         $this->_view->titulo = 'Contenido';
         $this->_view->foto = $this->_insertarFotos->getPhoto(Session::get('idUser'));
-      
+        for($i=0; $i<count($post) ; $i++)
+        {
+          $ret= array();
+          //array_push($post[$i],$array);
+          for($j=0; $j<count($retweet);$j++)
+          {
+            if($post[$i]['post']==$retweet[$j]['idpost'])
+            {
+              array_push($ret,$retweet[$j]['nickname']);
+              //array_push($post[$i],array("ret". $numberTweet =>$retweet[$j]['nickname']));
+              
+              $numberTweet++;
+            }
+
+            else
+            {
+              continue;
+            }
+
+          }
+          array_push($post[$i],$ret);
+          
+
+        }
+
+        $this->_view->post = $post;
+        print_r($post[3][5]);
+
         $this->_view->renderizar('index', 'post');
+
+        // insertar post
         if( $this->getTexto('comment')!==' ' && $this->getTexto('comment') !== 0 )
         {
             //$this->_view->prueba = $this->getTexto('comment');
