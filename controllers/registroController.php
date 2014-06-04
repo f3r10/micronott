@@ -42,14 +42,16 @@ class registroController extends Controller
                 }
                 if ($this->_registro->verificarUsuario($this->getAlphaNum('nickname')))
                 {
-                    echo "existe el usuario";
-                    exit;
+                    $this->_view->usuariosencontrados = $this->_registro->verificarUsuario($this->getAlphaNum('nickname'));
+                    //echo "existe el usuario";
+                    //exit;
 
                 }
                 if ($this->_registro->verificarMail($this->getPostParam('email')))
                 {
-                    echo  "exite el mail";
-                    exit;
+                    $this->_view->mailencontrado = $this->_registro->verificarMail($this->getPostParam('email'));
+                    /*echo  "exite el mail";
+                    exit;*/
                 }
                 else
                 {
