@@ -19,17 +19,12 @@ class postController extends Controller
       if(!empty(Session::get('idUser')))
       {
         $post=$this->_postSeguidos->cargarPostSeguidos(Session::get('idUser'));
-        //$this->_view->post=$this->_postSeguidos->cargarPostSeguidos(Session::get('idUser'));
-        //echo ($post[0]['post']);
-        
-        //print_r($post[0]);
-       // $post[0] = array("ret"=>12);
         $retweet=$this->_postSeguidos->getRetweet(Session::get('idUser'));
-        //print_r($post[0][5]['ret']);
-        //print_r($retweet[1]['idpost']);
         $this->_view->user=Session::get('usuario');
         $this->_view->titulo = 'Contenido';
         $this->_view->foto = $this->_insertarFotos->getPhoto(Session::get('idUser'));
+
+        //obtener los retnott de la app
         for($i=0; $i<count($post) ; $i++)
         {
           $ret= array();
@@ -39,7 +34,6 @@ class postController extends Controller
             if($post[$i]['post']==$retweet[$j]['idpost'])
             {
               array_push($ret,$retweet[$j]['nickname']);
-              //array_push($post[$i],array("ret". $numberTweet =>$retweet[$j]['nickname']));
               
               $numberTweet++;
             }
@@ -54,9 +48,9 @@ class postController extends Controller
           
 
         }
+        // fin de obtener retnott
 
         $this->_view->post = $post;
-        print_r($post[3][5]);
 
         $this->_view->renderizar('index', 'post');
 

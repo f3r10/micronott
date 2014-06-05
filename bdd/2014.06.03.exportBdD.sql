@@ -6,7 +6,7 @@
 -- Generation Time: Jun 04, 2014 at 02:57 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
-use micronot;
+use micronott;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 

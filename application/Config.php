@@ -1,6 +1,6 @@
 <?php
 
-define('BASE_URL', 'http://192.168.0.102/micronott/micronott/');
+define('BASE_URL', 'http://localhost/micronott/');
 define('DEFAULT_CONTROLLER', 'index');
 define('DEFAULT_LAYOUT', 'default');
 define('CONTENIDO_LAYOUT', 'defaultContenido');
@@ -13,6 +13,5 @@ define('DB_NAME','micronott');
 define('DB_CHAR','utf8');
 define('SESSION_TIME',1);
 define('HASH_KEY','53700f1d798c9');
-
 
 ?>

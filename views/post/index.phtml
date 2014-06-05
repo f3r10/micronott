@@ -23,12 +23,10 @@
 			<div class="acciones">
 				<div class="votos">
 					<?php if($this->post[$i]['nickname']!=$this->user): ?>
-					<a class="up" href="#" onclick="retweet('<?php echo($this->post[$i]['nickname']);?>','<?php echo $this->user ?>', '<?php echo($this->post[$i]['postingTime']);?>','<?php echo BASE_URL ?>','<?php echo $i?>')"></a>
+					<a class="up" href="#" onclick="retweet('<?php echo($this->post[$i]['nickname']);?>','<?php echo $this->user ?>', '<?php echo($this->post[$i]['postingTime']);?>','<?php echo BASE_URL ?>','<?php echo $i?>')">retnott</a>
 				<?php else: ?>
-				<a class="up" href="#"></a>
 			<?php endif; ?>
-					<span class="total">156</span>
-					<a class="down" href="#"></a>
+					
 				</div>
 				<div class="datos">
 					<a class="comentarios" href="#">

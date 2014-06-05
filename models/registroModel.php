@@ -11,7 +11,8 @@ class registroModel extends Model
 	{
 
 		$nick = $this->_db->query("select iduser from user where nickname='$nickname'");
-		if($nick->fetch())
+		$nick->fetch();
+		if(count($nick)>0)
 		{
 			return true;
 		}

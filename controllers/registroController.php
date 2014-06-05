@@ -11,6 +11,8 @@ class registroController extends Controller
 	}
     public function index()
     {
+        $validarNick = true;
+        $validarMail = true;
     	//$post = $this->loadModel('post');
     	//$this->_view->post=$post->getPost();
     	if((Session::get('autenticado')))
@@ -40,27 +42,42 @@ class registroController extends Controller
                     echo  $this->getAlphaNum('nickname');
                     $this->_view->renderizar('registro');
                 }
-                if ($this->_registro->verificarUsuario($this->getAlphaNum('nickname')))
+                if ($this->getPostParam('nickname'))
                 {
-                    $this->_view->usuariosencontrados = $this->_registro->verificarUsuario($this->getAlphaNum('nickname'));
-                    //echo "existe el usuario";
-                    //exit;
+                    if($this->_registro->verificarUsuario($this->getPostParam('nickname')))
+                    {
+                        $validarNick = false;
+                        $this->_view->usuariosencontrados = $this->_registro->verificarUsuario($this->getPostParam('nickname'));
+                        
+                    }
 
                 }
-                if ($this->_registro->verificarMail($this->getPostParam('email')))
+                if ($this->getPostParam('email'))
                 {
-                    $this->_view->mailencontrado = $this->_registro->verificarMail($this->getPostParam('email'));
-                    /*echo  "exite el mail";
-                    exit;*/
+                    if($this->_registro->verificarMail($this->getPostParam('email')))
+                    {
+                        $validarMail = false;
+                        
+                        $this->_view->mailencontrado = $this->_registro->verificarMail($this->getPostParam('email')); 
+                    }
+                    
+                    
                 }
                 else
                 {
-                     
-                     if($this->_registro->registrarUsuario($this->getPostParam('name'),$this->getPostParam('lastname'),$this->getAlphaNum('nickname'),$this->getPostParam('email'),$this->getPostParam('password')))
+                     if($validarMail && $validarNick)
+                     {
+                        if($this->_registro->registrarUsuario($this->getPostParam('name'),$this->getPostParam('lastname'),$this->getPostParam('nickname'),$this->getPostParam('email'),$this->getPostParam('password')))
                      {
                         $this->view->_mensaje = 'Registro completo';
-                        $this->redireccionar();
+                        //$this->redireccionar();
                      }
+                     }
+                     else
+                        {   
+                            
+                        }
+                     
                 }
                 
 
