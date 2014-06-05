@@ -8,34 +8,16 @@
 
 	<input type="text" class="text-field" placeholder="First Name"  id="fName" name="name" required/>
     <input type="text" class="text-field" placeholder="Last Name" id="lName" name="lastname" required/>
-    <input type="text" class="text-field" placeholder="NickName" id="nickname" name="nickname"  required/>
-    <?php if(isset($this->usuariosencontrados)):?>
-    </br></br>
-    <div id="div1">
-        <label id="usuario">Nickname ya fue registrado</label>    
-    <!--<input value="Nickname ya fue registrado" id="usuario" name="usuario" size="25"/>    -->
-    </div>
+    <input type="text" class="text-field" placeholder="NickName" id="nickname" name="nickname" onMouseUp="borrarMensajesNickname()" onkeyup="check_withAjax('nickname','<?php echo BASE_URL ?>')" required/>
+    <div class="hidden" id="hiddenUser">El usuario ya esta registrado</div>
     
-    <?php else:?>
-    <input type="hidden" name="usuario"/>
-    <?php endif?>
-    
-    <input type="email" class="text-field" placeholder="E-mail" name="email" id="email" onkeyup="check_withAjax()" required />
-    <?php if( isset($this->mailencontrado)):?>
-    </br></br>
-    <div id="div2">
-    <label id="mail">Email ya fue registrado</label>    
-    <!--<input value="Email ya fue registrado" id="mail" name="mail" size="25"/>-->
-    </div>    
-    <?php else:?>
-    <input type="hidden" name="mail"/>
-    <?php endif?>
+    <input type="email" class="text-field" placeholder="E-mail" name="email" onMouseUp="borrarMensajesMail()" id="email" onkeyup="check_withAjax('email','<?php echo BASE_URL ?>')" required />
+    <div class="hidden" id="hiddenMail">El email ya esta registrado</div>
     <input type="password" class="text-field" placeholder="Password" id="password" name="password" required/>
     <input type="password" class="text-field" placeholder="Repeat Password" id="password2" name="confirm" required /></br></br>
     
+
     <input id="botonregister" type="submit" value="Register Account"/>
 
 </form>
 	</section>
-<?php if(isset($this->prueba)) echo $this->prueba; ?>
-<script src="<?php echo BASE_URL; ?>views/registro/js/ajaxConnection.js"></script>

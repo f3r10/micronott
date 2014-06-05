@@ -71,16 +71,9 @@
 			
 		</div>
 		<div class="datosContenido">
-			<!--<?php //if(!isset($this->conteocomentarios)):?>-->
-			<!--<?php //if(count($this->post[$i][5])!=0): ?>-->
-			<a href="#" class="comentarios"><?php echo ($this->conteocomentarios[0]);?></a>
-			<!--<?php// endif?>-->
-			<!--<?php //endif?>-->
-			
-
-			<a href="#" class="siguiendo"><?php echo($this->conteoseguidores);?></a>
-
-			<a href="#" class="seguidores"><?php echo($this->conteoseguidos);?></a>
+			<a href="#" class="comentarios">12</a>
+			<a href="#" class="siguiendo">120</a>
+			<a href="#" class="seguidores">120</a>
 		</div>
 		</div>
 	</aside>

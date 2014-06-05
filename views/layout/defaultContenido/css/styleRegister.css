@@ -8,6 +8,11 @@ color:#191919;
 width:350px;
 margin:auto;
 }
+
+.hidden
+{
+	display: none;
+}
 nav {
 	position: fixed;
 	top: 10px;
