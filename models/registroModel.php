@@ -27,8 +27,8 @@ class registroModel extends Model
 			"select iduser from user where email='$email'"
 
 			);
-
-		if($email->fetch())
+		$email->fetch();
+		if(count($email)>0)
 		{
 			return true;
 		}
