@@ -17,5 +17,16 @@ class contarRegistrosModel extends Model
 		return $numberOfFollowing->fetchall();
 		}
 	}
+
+	public function contarComentarios($idUser)
+	{
+		//$datos = $this->_db->query("SELECT * FROM users");
+		$comentarios = $this->_db->query("SELECT COUNT(IdUser)FROM post where idUser='$idUser'");
+		
+		if($comentarios)
+		{
+		return $comentarios->fetchall();
+		}
+	}
 } 
 ?>

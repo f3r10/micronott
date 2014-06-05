@@ -4,11 +4,6 @@ background: url('../images/body-bg.jpg');
 font:14px 'Questrial', sans-serif;
 color:#191919;
 }
-
-.hidden
-{
-	display: none;
-}
 #wrapper{
 width:350px;
 margin:auto;

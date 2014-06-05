@@ -19,7 +19,6 @@
 	
 	<!--code for js-->
 	<script src="<?php echo $_layoutParams['ruta_js'] ?>jquery-2.1.0.min.js"></script>
-	<script src="<?php echo $_layoutParams['ruta_js'] ?>ajaxConnection.js"></script>
 	
     
      

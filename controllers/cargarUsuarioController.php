@@ -9,6 +9,13 @@ class cargarUsuarioController extends Controller
 	private $_idUsuario;
 	private $_insertarFotos;
 	private $_perfil;
+	private $_following;
+
+
+		
+		
+		
+        
 
 
 	public function __construct()
@@ -18,9 +25,18 @@ class cargarUsuarioController extends Controller
 		$this->_btnParaSeguirUser = $this->loadModel('seguir');
 		$this->_insertarFotos = $this->loadModel('insertarFotos');
 		$this->_perfil = $this->loadModel('profile');
+		$this->_conteocomentarios=$this->loadModel('countParams');
+        $this->_conteoseguidos=$this->loadModel('countParams');
+        $this->_following = $this->loadModel('postSeguidos');
+		
 	}
     public function index()
     {
+    	$this->_view->conteocomentarios=$this->_conteocomentarios->contarComentarios(Session::get('idUser'));
+        //print_r($this->_conteocomentarios->contarComentarios(Session::get('idUser')));
+        $this->_view->conteoseguidos=count($this->_following->userOfFollower(Session::get('idUser')));
+
+        $this->_view->conteoseguidores = count($this->_following->userOfFollowing(Session::get('idUser')));
     	if(!empty(Session::get('idUser')))
 		{					
 			if($this->_btnParaSeguirUser->comprobarSeguimiento(Session::get('idUser'), $this->getInt('usuario')))

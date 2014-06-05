@@ -13,6 +13,7 @@ function ajaxPostCallManip(str,url,toDoFunc) {
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xmlhttp.send(str);
+        console.log(str);
     }
 
 
@@ -57,50 +58,29 @@ function check_login()
         });
     }
 
-function check_withAjax(value_check_ajax,url)
+function check_withAjax(value_check_ajax)
 {
-	var post_check_email = value_check_ajax +"=" + document.getElementById(value_check_ajax).value + "&" + "enviar=1";
-	ajaxPostCallManip(post_check_email, url+ "ajax/"+value_check_ajax, function()  
+	var post_check_email = value_check_ajax +"=" + document.getElementById(value_check_ajax).value;
+	ajaxPostCallManip(post_check_email, "index.php", function()  
         // toDoFunc to be performed when server response is ready
         {
         if( xmlhttp.readyState == 4 && xmlhttp.status == 200 )
         {   
-        	if(xmlhttp.responseText=="mail ya existe")
+            console.log(xmlhttp.responseText);	
+        	if(xmlhttp.responseText=="usuario ya registrado")
             {
 
-                document.getElementById('email').style.border="solid 1px red";
-                document.getElementById("hiddenMail").style.display = "block";
+                document.getElementById(value_check_ajax).style.border="solid 1px red";
             }
 
-            else if (xmlhttp.responseText=="mail no exite")
+            else if (xmlhttp.responseText=="usuario no registrado")
             {
-                document.getElementById('email').style.border="solid 1px green";
-            }
-            else if(xmlhttp.responseText=="usuario ya exite")
-            {
-                document.getElementById('nickname').style.border="solid 1px red";
-                document.getElementById("hiddenUser").style.display = "block";
-
-            }
-            else if(xmlhttp.responseText=="usuario no exite")
-            {
-                document.getElementById('nickname').style.border="solid 1px green";
-
+                document.getElementById(value_check_ajax).style.border="solid 1px green";
             }
 
         }
         });
 
-}
-function borrarMensajesMail()
-{
-        
-            document.getElementById("hiddenMail").style.display = "none";
-        
-}
-function borrarMensajesNickname()
-{
-    document.getElementById("hiddenUser").style.display = "none";
 }
 
 function check_register(value_check_ajax)

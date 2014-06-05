@@ -13,12 +13,15 @@ class registroController extends Controller
     {
         $validarNick = true;
         $validarMail = true;
+    	//$post = $this->loadModel('post');
+    	//$this->_view->post=$post->getPost();
     	if((Session::get('autenticado')))
         {
             $this->redireccionar();
         }
         else
         {
+
             $this->_view->titulo = 'Registro';
             if($this->getInt('enviar') == 1)
             { 
@@ -39,40 +42,40 @@ class registroController extends Controller
                     echo  $this->getAlphaNum('nickname');
                     $this->_view->renderizar('registro');
                 }
-                      
-                if(count($this->_registro->verificarUsuario($this->getPostParam('nickname')))>1)
-                        {
-                            $validarNick = false;
-                            $this->usuariosencontrados=1;
-                        }
+                if ($this->getPostParam('nickname'))
+                {
+                    if($this->_registro->verificarUsuario($this->getPostParam('nickname')))
+                    {
+                        $validarNick = false;
+                        $this->_view->usuariosencontrados = $this->_registro->verificarUsuario($this->getPostParam('nickname'));
                         
-                    
+                    }
 
-                }   
+                }
+                if ($this->getPostParam('email'))
+                {
+                    if($this->_registro->verificarMail($this->getPostParam('email')))
+                    {
+                        $validarMail = false;
                         
-                if(count($this->_registro->verificarMail($this->getPostParam('email')))>1)
-                        {
-                            $validarMail = false; 
-                            $this->mailencontrado=1;
-                        }
+                        $this->_view->mailencontrado = $this->_registro->verificarMail($this->getPostParam('email')); 
+                    }
                     
                     
-                    
-                
+                }
                 else
                 {
                      if($validarMail && $validarNick)
                      {
-                        echo "entra a la parte de registro";
                         if($this->_registro->registrarUsuario($this->getPostParam('name'),$this->getPostParam('lastname'),$this->getPostParam('nickname'),$this->getPostParam('email'),$this->getPostParam('password')))
                      {
                         $this->view->_mensaje = 'Registro completo';
-                        $this->redireccionar();
+                        //$this->redireccionar();
                      }
                      }
                      else
                         {   
-                            echo "no entra a la parte de registro";
+                            
                         }
                      
                 }
@@ -83,7 +86,7 @@ class registroController extends Controller
         }
         
         
-    
+    }
 }
 
 ?>

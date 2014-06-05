@@ -29,9 +29,10 @@
 					
 				</div>
 				<div class="datos">
-					<a class="comentarios" href="#">
-						10
-					</a>
+					<?php if(count($this->post[$i][5])!=0): ?>
+				<a class="comentarios" href="#"><?php echo($this->conteoretweet);?></a>				
+				<?php endif?>
+					
 					<a class="estrellita" href="#"></a>
 				</div>
 			</div>

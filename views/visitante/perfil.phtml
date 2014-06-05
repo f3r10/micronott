@@ -1,4 +1,17 @@
 <?php if(isset($this->nombreUsuarioMicronott)): ?>
+
+	<?php 
+		private $_following;
+		$this->_conteocomentarios=$this->loadModel('countParams');
+        $this->_conteoseguidos=$this->loadModel('countParams');
+        $this->_following = $this->loadModel('postSeguidos');
+		$this->_view->conteocomentarios=$this->_conteocomentarios->contarComentarios(Session::get('idUser'));
+        //print_r($this->_conteocomentarios->contarComentarios(Session::get('idUser')));
+        $this->_view->conteoseguidos=$this->_conteoseguidos->contarSeguidos(Session::get('idUser'));
+
+        $this->_view->conteoseguidores = count($this->_following->userOfFollowing(Session::get('idUser')));
+        ?>
+
 	<h1>Perfil del usuario <?php echo $this->nombreUsuarioMicronott ?></h1>
 	<img src="<?php echo BASE_URL .  $this->foto['location']  ?>" alt="nombre <?php echo $this->nombreUsuarioMicronott ?>"/>
 	<h4><?php echo $this->foto['caption']  ?></h4>
