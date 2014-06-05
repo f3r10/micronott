@@ -8,11 +8,11 @@
 
 	<input type="text" class="text-field" placeholder="First Name"  id="fName" name="name" required/>
     <input type="text" class="text-field" placeholder="Last Name" id="lName" name="lastname" required/>
-    <input type="text" class="text-field" placeholder="NickName" id="nickname" name="nickname" onkeyup="check_withAjax('nickname','<?php echo BASE_URL ?>')" required/>
-    <div class="hidden" id="hiddenUser" onload="borrarMensajes()">El usuario ya esta registrado</div>
+    <input type="text" class="text-field" placeholder="NickName" id="nickname" name="nickname" onMouseUp="borrarMensajesNickname()" onkeyup="check_withAjax('nickname','<?php echo BASE_URL ?>')" required/>
+    <div class="hidden" id="hiddenUser">El usuario ya esta registrado</div>
     
-    <input type="email" class="text-field" placeholder="E-mail" name="email" id="email" onkeyup="check_withAjax('email','<?php echo BASE_URL ?>')" required />
-    <div class="hidden" id="hiddenMail" onload="borrarMensajes()">El email ya esta registrado</div>
+    <input type="email" class="text-field" placeholder="E-mail" name="email" onMouseUp="borrarMensajesMail()" id="email" onkeyup="check_withAjax('email','<?php echo BASE_URL ?>')" required />
+    <div class="hidden" id="hiddenMail">El email ya esta registrado</div>
     <input type="password" class="text-field" placeholder="Password" id="password" name="password" required/>
     <input type="password" class="text-field" placeholder="Repeat Password" id="password2" name="confirm" required /></br></br>
     

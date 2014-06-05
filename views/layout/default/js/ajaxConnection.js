@@ -13,7 +13,6 @@ function ajaxPostCallManip(str,url,toDoFunc) {
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xmlhttp.send(str);
-        console.log(str);
     }
 
 
@@ -66,7 +65,6 @@ function check_withAjax(value_check_ajax,url)
         {
         if( xmlhttp.readyState == 4 && xmlhttp.status == 200 )
         {   
-            console.log(xmlhttp.responseText);	
         	if(xmlhttp.responseText=="mail ya existe")
             {
 
@@ -94,13 +92,15 @@ function check_withAjax(value_check_ajax,url)
         });
 
 }
-function borrarMensajes()
+function borrarMensajesMail()
 {
-    if(document.getElementById('email').value=0)
-    {
-        alert("emai 0");
-        document.getElementById('email').style.display = "none";
-    }
+        
+            document.getElementById("hiddenMail").style.display = "none";
+        
+}
+function borrarMensajesNickname()
+{
+    document.getElementById("hiddenUser").style.display = "none";
 }
 
 function check_register(value_check_ajax)

@@ -31,7 +31,7 @@ function retweet(nickname,user, time, url,idPost)
             {
             	console.log(idPost);
             	console.log(document.getElementById(idPost));
-            	document.getElementById(idPost).style.display = "";
+            	document.getElementById(idPost).style.display = "block";
             }	
         	
 

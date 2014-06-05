@@ -39,46 +39,31 @@ class registroController extends Controller
                     echo  $this->getAlphaNum('nickname');
                     $this->_view->renderizar('registro');
                 }
-                if ($this->getPostParam('nickname'))
-                {
                       
-                        if(count($this->_registro->verificarUsuario($this->getPostParam('nickname')))>1)
+                if(count($this->_registro->verificarUsuario($this->getPostParam('nickname')))>1)
                         {
                             $validarNick = false;
                             $this->usuariosencontrados=1;
-                            echo "usuario ya registrado";
-                        }
-                        else
-                        {
-                            $validarNick = true;
-                            $this->usuariosencontrados=0;
                         }
                         
                     
 
-                }
-                if ($this->getPostParam('email'))
-                {
-                    
-                        if(count($this->_registro->verificarMail($this->getPostParam('email')))>1)
+                }   
+                        
+                if(count($this->_registro->verificarMail($this->getPostParam('email')))>1)
                         {
                             $validarMail = false; 
                             $this->mailencontrado=1;
-                            echo "mail ya registrado";
-                        }
-                        else
-                        {
-                            $validarMail = true;
-                            $this->mailencontrado=0;
                         }
                     
                     
                     
-                }
+                
                 else
                 {
                      if($validarMail && $validarNick)
                      {
+                        echo "entra a la parte de registro";
                         if($this->_registro->registrarUsuario($this->getPostParam('name'),$this->getPostParam('lastname'),$this->getPostParam('nickname'),$this->getPostParam('email'),$this->getPostParam('password')))
                      {
                         $this->view->_mensaje = 'Registro completo';
@@ -87,7 +72,7 @@ class registroController extends Controller
                      }
                      else
                         {   
-                            
+                            echo "no entra a la parte de registro";
                         }
                      
                 }
@@ -98,7 +83,7 @@ class registroController extends Controller
         }
         
         
-    }
+    
 }
 
 ?>
