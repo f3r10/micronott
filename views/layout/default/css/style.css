@@ -8,6 +8,11 @@ color:#191919;
 width:350px;
 margin:auto;
 }
+
+#mensajeerror{
+	color: red;
+	border: none;
+}
 nav {
 	position: fixed;
 	top: 10px;
@@ -47,7 +52,7 @@ margin:20px 30px;
 #form{ 
 width:350px;
 margin:80px auto;
-height:290px;
+height:300px;
 position:relative;
 background:#fff;
 -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);

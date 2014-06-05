@@ -10,8 +10,10 @@
     <input type="text" class="text-field" placeholder="Last Name" id="lName" name="lastname" required/>
     <input type="text" class="text-field" placeholder="NickName" id="nickname" name="nickname"  required/>
     <?php if( isset($this->usuariosencontrados)):?>
+    </br></br>
     <div id="div1">
-    <input value="Nickname ya fue registrado" id="usuario" name="usuario" size="25"/>    
+        <label id="usuario">Nickname ya fue registrado</label>    
+    <!--<input value="Nickname ya fue registrado" id="usuario" name="usuario" size="25"/>    -->
     </div>
     
     <?php else:?>
@@ -20,8 +22,10 @@
     
     <input type="email" class="text-field" placeholder="E-mail" name="email" id="email" onkeyup="check_withAjax()" required />
     <?php if( isset($this->mailencontrado)):?>
+    </br></br>
     <div id="div2">
-    <input value="Email ya fue registrado" id="mail" name="mail" size="25"/>
+    <label id="mail">Email ya fue registrado</label>    
+    <!--<input value="Email ya fue registrado" id="mail" name="mail" size="25"/>-->
     </div>    
     <?php else:?>
     <input type="hidden" name="mail"/>

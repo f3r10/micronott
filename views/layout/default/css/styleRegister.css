@@ -9,22 +9,31 @@ width:350px;
 margin:auto;
 }
 
-#div1,#div2{
+/*#div1,#div2{
 	float: right;
-}
-#usuario,#mail{
-	padding-top:15%; 
-	border: none;
-	color: red;
-	padding-right: 50px;
-}
+}*/
 #h2{
 	padding-left: 80px;
+	}
+	#botonregister{
+margin-left: 20%;
 }
-#botonregister{
+#usuario,#mail{
+	/*padding-top:15%; 
+	border: none;*/
+	color: red;
+	padding-left: 35px;
+	/*padding-right: 50px;*/
+}
+/*#h2{
+	padding-left: 80px;
+}*/
+/*#botonregister{
 margin-left: 12%;
 
-}
+}*/
+
+
 /*#mail{
 	padding-top: 15%;
 	border: none;
@@ -88,8 +97,8 @@ form {
 }
 
 form.register{																				/* Register form height */
-	height: 420px;
-	width:  485px;
+	height: 480px;
+	width:  270px;
 	padding-left: 20px;
 }
 

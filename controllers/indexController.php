@@ -44,11 +44,21 @@ class indexController extends Controller
                     $this->getPostParam('username'),
                     $this->getSql('password')
                     );
+
+
+            
             
             if(!$row){
-                $this->_view->_error = 'Usuario y/o password incorrectos';
-                $this->_view->renderizar('index');
-                exit;
+                $this->_view->usuarioincorrecto = $this->_login->getUsuario($this->getPostParam('username'),$this->getSql('password'));
+                //$this->_view->_error ='usuario incorrectos';
+                /*$this->_view->usuarioincorrecto=$this->_login->getUsuario(
+                    $this->getPostParam('username'),
+                    $this->getSql('password')
+                    );*/
+
+                //$this->_view->_error = 'Usuario y/o password incorrectos';
+                //$this->_view->renderizar('index');
+                //exit;
             }
             else
             {
