@@ -6,16 +6,27 @@ class configureAccountController extends Controller
     private $_perfil;
     private $_fotos;
     private $_profile;
+	private $_conteocomentarios;
+    private $_conteoseguidos;
+    private $_following;
 	public function __construct()
 	{
 		parent::__construct();
         $this->_perfil = $this->loadModel('configurationAccount');
         $this->_fotos = $this->loadModel('insertarFotos');
         $this->_profile = $this->loadModel('profile');
+		$this->_conteocomentarios=$this->loadModel('countParams');
+        $this->_conteoseguidos=$this->loadModel('countParams');
+        $this->_following = $this->loadModel('postSeguidos');
 
 	}
     public function index()
-    {   if(!empty(Session::get('idUser')))
+    {   
+	$this->_view->conteoseguidores = count($this->_following->userOfFollowing(Session::get('idUser')));
+        $this->_view->conteocomentarios=$this->_conteocomentarios->contarComentarios(Session::get('idUser'));
+        //print_r($this->_conteocomentarios->contarComentarios(Session::get('idUser')));
+        $this->_view->conteoseguidos=count($this->_following->userOfFollower(Session::get('idUser')));
+	if(!empty(Session::get('idUser')))
         {
         $this->_view->foto = $this->_fotos->getPhoto(Session::get('idUser'));
         $this->_view->renderizar('configureAccount','post'); 
