@@ -58,29 +58,49 @@ function check_login()
         });
     }
 
-function check_withAjax(value_check_ajax)
+function check_withAjax(value_check_ajax,url)
 {
-	var post_check_email = value_check_ajax +"=" + document.getElementById(value_check_ajax).value;
-	ajaxPostCallManip(post_check_email, "index.php", function()  
+	var post_check_email = value_check_ajax +"=" + document.getElementById(value_check_ajax).value + "&" + "enviar=1";
+	ajaxPostCallManip(post_check_email, url+ "ajax/"+value_check_ajax, function()  
         // toDoFunc to be performed when server response is ready
         {
         if( xmlhttp.readyState == 4 && xmlhttp.status == 200 )
         {   
             console.log(xmlhttp.responseText);	
-        	if(xmlhttp.responseText=="usuario ya registrado")
+        	if(xmlhttp.responseText=="mail ya existe")
             {
 
-                document.getElementById(value_check_ajax).style.border="solid 1px red";
+                document.getElementById('email').style.border="solid 1px red";
+                document.getElementById("hiddenMail").style.display = "block";
             }
 
-            else if (xmlhttp.responseText=="usuario no registrado")
+            else if (xmlhttp.responseText=="mail no exite")
             {
-                document.getElementById(value_check_ajax).style.border="solid 1px green";
+                document.getElementById('email').style.border="solid 1px green";
+            }
+            else if(xmlhttp.responseText=="usuario ya exite")
+            {
+                document.getElementById('nickname').style.border="solid 1px red";
+                document.getElementById("hiddenUser").style.display = "block";
+
+            }
+            else if(xmlhttp.responseText=="usuario no exite")
+            {
+                document.getElementById('nickname').style.border="solid 1px green";
+
             }
 
         }
         });
 
+}
+function borrarMensajes()
+{
+    if(document.getElementById('email').value=0)
+    {
+        alert("emai 0");
+        document.getElementById('email').style.display = "none";
+    }
 }
 
 function check_register(value_check_ajax)

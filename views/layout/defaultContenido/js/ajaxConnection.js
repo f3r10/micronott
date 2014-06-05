@@ -13,7 +13,7 @@ function ajaxPostCallManip(str,url,toDoFunc) {
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xmlhttp.send(str);
-        console.log(str);
+        //console.log(str);
     }
 
 
@@ -58,15 +58,15 @@ function check_login()
         });
     }
 
-function check_withAjax(value_check_ajax)
+function check_withAjax(value_check_ajax,url)
 {
 	var post_check_email = value_check_ajax +"=" + document.getElementById(value_check_ajax).value;
-	ajaxPostCallManip(post_check_email, "index.php", function()  
+	ajaxPostCallManip(post_check_email, url+"registro", function()  
         // toDoFunc to be performed when server response is ready
         {
         if( xmlhttp.readyState == 4 && xmlhttp.status == 200 )
         {   
-            console.log(xmlhttp.responseText);	
+            //console.log(xmlhttp.responseText);	
         	if(xmlhttp.responseText=="usuario ya registrado")
             {
 

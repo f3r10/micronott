@@ -11,31 +11,16 @@ class registroModel extends Model
 	{
 
 		$nick = $this->_db->query("select iduser from user where nickname='$nickname'");
-		$nick->fetch();
-		if(count($nick)>0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+	
+		
+			return $nick->fetch();
 	}
 	public function verificarMail($email)
 	{
 		$email = $this->_db->query(
-			"select iduser from user where email='$email'"
-
-			);
-		$email->fetch();
-		if(count($email)>0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+			"select iduser from user where email='$email'");
+		
+			return $email->fetch();
 	}
 
 	public function registrarUsuario($nombre, $apellido, $nickname, $email, $password)
