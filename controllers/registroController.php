@@ -63,7 +63,6 @@ class registroController extends Controller
                 {
                      if($validarMail && $validarNick)
                      {
-                        echo "entra a la parte de registro";
                         if($this->_registro->registrarUsuario($this->getPostParam('name'),$this->getPostParam('lastname'),$this->getPostParam('nickname'),$this->getPostParam('email'),$this->getPostParam('password')))
                      {
                         $this->view->_mensaje = 'Registro completo';
@@ -71,9 +70,10 @@ class registroController extends Controller
                      }
                      }
                      else
-                        {   
-                            echo "no entra a la parte de registro";
-                        }
+                     {
+                        $this->redireccionar();
+                     }
+    
                      
                 }
                 
